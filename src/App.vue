@@ -1,18 +1,19 @@
 <template>
-  <LoginView>123</LoginView>
+  <!--<LoginView>123</LoginView>-->
+  <SearchLiving></SearchLiving>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloView.vue'
-import LoginView from "./view/LoginView.vue";
-
+// import LoginView from "./view/LoginView.vue";
+import SearchLiving from "./components/SearchLiving.vue";
 
 export default {
   name: 'App',
   components: {
     // HelloWorld,
-    LoginView,
-
+    // LoginView,
+    SearchLiving
   }
 }
 </script>
