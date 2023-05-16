@@ -327,7 +327,6 @@ export default {
 }
 
 .RightCol_EachHotel_Message_Depict {
-
     border-left: 1px solid rgb(231,231,231);
     border-top: none;
     border-right: none;
