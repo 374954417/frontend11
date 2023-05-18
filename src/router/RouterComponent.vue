@@ -10,7 +10,7 @@
                     <el-button class="RegisterButton">
                         注册
                     </el-button>
-                    <el-button class="LoginButton">
+                    <el-button class="LoginButton" @click="navigatorToLogin">
                         登录
                     </el-button>
                 </div>
@@ -28,6 +28,7 @@
     </el-row>
     <!--路由占位标签-->
     <router-view></router-view>
+
 </template>
 
 <script>
@@ -41,6 +42,10 @@ export default {
 
         navigatorToView() {
             this.$router.push('/view');
+        },
+
+        navigatorToLogin(){
+            this.$router.push('/login');
         }
     }
 }

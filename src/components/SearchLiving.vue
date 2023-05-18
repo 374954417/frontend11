@@ -173,8 +173,8 @@ export default {
 
         ConvertToReserve(index){
             this.choose = index;
-            alert(index);
-            this.$router.push("/living/" + this.hotelInfo[this.choose].name);
+            // + this.hotelInfo[this.choose].name
+            this.$router.push("/living/reverse" );
         }
 
     },

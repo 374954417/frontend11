@@ -1,5 +1,5 @@
 <template>
-    <el-row class="WholeLayout">
+    <el-row class="WholeLayout_Base">
         <div class="WholeLayout_Left"></div>
         <div class="WholeLayout_Center">
             <el-row>
@@ -144,12 +144,21 @@ export default {
                 { value: 0, label: '儿童' },
                 { value: 1, label: '客房' },
             ],
-            hotelInfo: "",
+
+            hotelInfo: [
+                {
+                    imgSrc: "土拨鼠.jpg",
+                    name: "balabala",
+                    rate: 8,
+                    depict: "这是一个非常好的宾馆豪华客房\
+1张大号双人床\
+该价格的客房在我们网站上仅剩4间" },
+            ],
 
             hotelPicture: [
-                "约旦湖.jpg",
-                "日本姬路市.jfif",
-                "sharpless 2-106.jfif",
+                "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
+                "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
+                "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
             ],
 
             reserveTableData: [
@@ -279,7 +288,7 @@ export default {
     flex: 1;
 }
 
-.WholeLayout {
+.WholeLayout_Base {
     display: flex;
     min-width: 1200px;
 }
@@ -293,7 +302,7 @@ export default {
 }
 
 .RightCol_FirstRow_HotelRate {
-    margin-left: 630px;
+    margin-left: 730px;
     border-style: solid;
     border-width: 1px;
     background-color: rgb(0, 53, 128);

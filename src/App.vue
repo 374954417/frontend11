@@ -1,18 +1,18 @@
 <template>
   <!--<LoginView>123</LoginView>
     <SearchLiving></SearchLiving>
-    <RouterComponent></RouterComponent>
+    <ReserveComponent></ReserveComponent>
   -->
-  <ReserveComponent></ReserveComponent>
-
+  
+  <RouterComponent></RouterComponent>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloView.vue'
 // import LoginView from "./view/LoginView.vue";
 // import SearchLiving from "./components/SearchLiving.vue";
-// import RouterComponent from "./router/RouterComponent"
-import ReserveComponent from './components/ReserveComponent.vue';
+import RouterComponent from "./router/RouterComponent"
+//import ReserveComponent from './components/ReserveComponent.vue';
 
 export default {
   name: 'App',
@@ -20,8 +20,8 @@ export default {
     // HelloWorld,
     // LoginView,
     // SearchLiving,
-    //RouterComponent,
-    ReserveComponent
+    RouterComponent,
+    //ReserveComponent
   },
 }
 </script>

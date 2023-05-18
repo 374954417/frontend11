@@ -210,7 +210,6 @@ export default {
     left: 25px;
     color: white;
     text-shadow: 2px 2px 4px black;
-
 }
 
 .row {
@@ -242,4 +241,5 @@ export default {
     object-position: center;
     border-radius: 10px;
 }
+
 </style>
