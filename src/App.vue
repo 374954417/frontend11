@@ -1,9 +1,9 @@
 <template>
   <!--<LoginView>123</LoginView>
     <SearchLiving></SearchLiving>
+    <RouterComponent></RouterComponent>
   -->
-  <RouterComponent></RouterComponent>
-
+  <ReserveComponent></ReserveComponent>
 
 </template>
 
@@ -11,8 +11,8 @@
 // import HelloWorld from './components/HelloView.vue'
 // import LoginView from "./view/LoginView.vue";
 // import SearchLiving from "./components/SearchLiving.vue";
-import RouterComponent from "./router/RouterComponent"
-import router from "./router/index"
+// import RouterComponent from "./router/RouterComponent"
+import ReserveComponent from './components/ReserveComponent.vue';
 
 export default {
   name: 'App',
@@ -20,9 +20,9 @@ export default {
     // HelloWorld,
     // LoginView,
     // SearchLiving,
-    RouterComponent,
+    //RouterComponent,
+    ReserveComponent
   },
-  router: router,
 }
 </script>
 

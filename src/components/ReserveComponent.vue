@@ -1,5 +1,5 @@
 <template>
-    <div class="WholeLayout_Base">
+    <el-row class="WholeLayout">
         <div class="WholeLayout_Left"></div>
         <div class="WholeLayout_Center">
             <el-row>
@@ -41,120 +41,137 @@
                         <el-button type="success" class="SearchInfo_OkButton" @click="SearchInfo_OkButton">搜特价</el-button>
 
                     </el-row>
-
-                    <div class="FliterNote">
-                        <el-row style="margin-left: 15px; margin-top: 7px; ">
-                            <b style="font-size: 20px;">缩小搜索范围</b>
-                        </el-row>
-                    </div>
-
-                    <div class="FliterMoney">
-                        <div class="FliterMoney_Note">
-                            <b>你的预算（每晚）</b>
-                        </div>
-                    </div>
-
                 </el-col>
+
                 <el-col :span="18">
-                    <div class="RightCol_TotalNote">
-                        <b>{{ spliceDestinationInfo }}</b>
-                    </div>
+                    <el-row class="RightCol_FisrtRow">
+                        <el-col span="18">
+                            <b class="RightCol_FirstRow_HotelName">{{ this.hotelInfo.name }}</b>
+                        </el-col>
+                        <el-col span="6">
+                            <div class="RightCol_FirstRow_HotelRate">{{ this.hotelInfo.rate }}</div>
+                        </el-col>
+                    </el-row>
 
-                    <el-select v-model="spliceSortWay" class="RightCol_SortWays">
-                        <el-option v-for="(option, index) in sortBy" :key="index" :label="option.label"
-                            :value="option.value">
-                        </el-option>
-                    </el-select>
-
-                    <div class="RightCol_EachHotel" v-for="(option, index) in hotelInfo" :key="index">
+                    <el-row class="RightCol_SecondRow">
                         <el-row>
-                            <el-col :span="6.5">
-                                <img :src="option.imgSrc" class="RightCol_EachHotel_Photo" />
-                            </el-col>
-                            <el-col :span="17.5">
-                                <el-row class="RightCol_EachHotel_Message">
-                                    <el-col :span="22" class="RightCol_EachHotel_Message_Title">
-                                        <b>{{ option.name }}</b>
-                                    </el-col>
-                                    <el-col :span="2">
-                                        <el-button class="RightCol_EachHotel_Message_Rate">
-                                            {{ option.rate }}
-                                        </el-button>
-                                    </el-col>
-                                </el-row>
-                                <el-row class="RightCol_EachHotel_Message_Depict">
-                                    <div style="margin-left: 10px;">
-                                        {{option.depict}}
-                                    </div>
+                            <el-col span="6">
+                                <el-row>
+                                    <img :src="this.hotelPicture[0]" class="HotelPicture_TopLeft" />
                                 </el-row>
                                 <el-row>
-                                    <el-button class="RightCol_EachHotel_Message_ReserveButton" @click="ConvertToReserve(index)">
-                                        查看可定选项<span>&nbsp;&nbsp;&nbsp;</span>>
-                                    </el-button>
+                                    <img :src="this.hotelPicture[1]" class="HotelPicture_DownLeft" />
                                 </el-row>
+
+                            </el-col>
+                            <el-col span="18">
+                                <img :src="this.hotelPicture[2]" class="HotelPicture_Right" />
                             </el-col>
                         </el-row>
-                    </div>
+
+                    </el-row>
                 </el-col>
+
+            </el-row>
+
+            <el-row class="ReservePart">
+                <b class="ReserveTableTitle">空房情况</b>
+            </el-row>
+
+            <el-row>
+                <table>
+                    <tr class="ReserveTable_Head">
+                        <td class="ReserveTable_RoomStyle">
+                            <div style="margin-left: 5px;">客房类型</div>
+                        </td>
+                        <td class="ReserveTable_PeopleNumber">
+                            <div style="margin-left: 5px;">客人数</div>
+                        </td>
+                        <td class="ReserveTable_Price">
+                            <div style="margin-left: 5px;">今日价格</div>
+                        </td>
+                        <td class="ReserveTable_Note">
+                            <div style="margin-left: 5px;">预定须知</div>
+                        </td>
+                        <td style="width: 420px;">
+                        </td>
+
+                    </tr>
+
+                    <template v-for="(room, index) in this.reserveTableData" :key="index">
+                        <tr>
+                            <td class="ReserveTable_RoomStyle">
+                                <div style="margin-left: 5px;">
+                                    客房类型
+                                </div>
+                            </td>
+                            <td class="ReserveTable_PeopleNumber">
+                                <div style="margin-left: 5px;">
+                                    客人数
+                                </div>
+                            </td>
+                            <td class="ReserveTable_Price">
+                                <div style="margin-left: 5px;">
+                                    今日价格
+                                </div>
+                            </td>
+                            <td class="ReserveTable_Note">
+                                <div style="margin-left: 5px;">
+                                    预定须知
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+
+                </table>
             </el-row>
         </div>
         <div class="WholeLayout_Right"></div>
-    </div>
+    </el-row>
 </template>
   
 <script>
 
-
 export default {
-
     data() {
         return {
             destination: '中国',
-            count: 0,
             inDate: '',
             outDate: '',
             checkInInfo_collapseTag: false,
             checkInInfo: [
                 { value: 1, label: '成人' },
                 { value: 0, label: '儿童' },
-                { value: 1, label: '客房' }
+                { value: 1, label: '客房' },
+            ],
+            hotelInfo: "",
+
+            hotelPicture: [
+                "约旦湖.jpg",
+                "日本姬路市.jfif",
+                "sharpless 2-106.jfif",
             ],
 
-            sortWay: 0,
-
-            sortBy: [
-                { value: 0, label: "热门推荐" },
-                { value: 1, label: "优先显示低价住宿" },
-                { value: 2, label: "住宿评级（从高到低）" },
-            ],
-
-            choose: 0,
-
-            hotelInfo: [
-                { imgSrc: "土拨鼠.jpg", name: "balabala", rate: 7.8, depict: "这是一个非常好的宾馆豪华客房\
-1张大号双人床\
-该价格的客房在我们网站上仅剩4间" },
+            reserveTableData: [
+                {
+                    roomStyle: "豪华客房", roomDepit: "1张大号双人床", detail: [
+                        { pnum: 2, price: 448, note: "无需预付到店付款" },
+                        { pnum: 1, price: 390, note: "无需预付到店付款" },
+                    ]
+                },
+                {
+                    roomStyle: "单人间", roomDepit: "1张单人床", detail: [
+                        { pnum: 1, price: 295, note: "我们网站上只剩3间房了" },
+                    ]
+                }
             ]
-
         }
     },
     computed: {
         spliceCheckInInfo() {
             return this.checkInInfo[0].value.toString() + "位成人·" + this.checkInInfo[1].value.toString() + "位儿童·" + this.checkInInfo[2].value.toString() + "间客房"
         },
-        spliceDestinationInfo() {
-            return this.destination + "：共" + this.count + "家住宿"
-        },
-        spliceSortWay: {
-            set(newValue) {
-                this.sortWay = newValue;
-            },
 
-            get() {
-                return "排序方式：" + this.sortBy[this.sortWay].label
-            }
-
-        }
     },
     methods: {
         Increment(idx) {
@@ -169,15 +186,9 @@ export default {
         },
         SearchInfo_OkButton() {
             // 搜特价
-        },
-
-        ConvertToReserve(index){
-            this.choose = index;
-            alert(index);
-            this.$router.push("/living/" + this.hotelInfo[this.choose].name);
         }
-
     },
+
 }
 
 </script>
@@ -268,90 +279,83 @@ export default {
     flex: 1;
 }
 
-.WholeLayout_Base {
+.WholeLayout {
     display: flex;
     min-width: 1200px;
 }
 
-.RightCol_TotalNote {
-    margin-top: 20px;
+.RightCol_FisrtRow {
+    margin-top: 10px;
+}
+
+.RightCol_FirstRow_HotelName {
     font-size: x-large;
 }
 
-.RightCol_SortWays {
-    max-width: 400px;
-    width: 250px;
-    margin-top: 15px;
+.RightCol_FirstRow_HotelRate {
+    margin-left: 630px;
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(45, 138, 205);
-}
-
-.RightCol_HotelInfo {
-    margin-top: 15px;
-    width: 720px;
-    height: 230px;
-    border-style: solid;
-}
-
-.RightCol_EachHotel {
-    width: 820px;
-    height: 250px;
-    margin-top: 15px;
-    border-style: solid;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    border-width: 1px;
-    border-color: rgb(198, 198, 198);
-}
-
-.RightCol_EachHotel_Photo {
-    width: 200px;
-    height: 200px;
-    margin-top: 15px;
-    margin-left: 15px;
-}
-
-.RightCol_EachHotel_Message {
-    margin-top: 15px;
-    margin-left: 15px;
+    background-color: rgb(0, 53, 128);
+    color: white;
+    width: 35px;
+    height: 35px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 0px;
 }
 
-.RightCol_EachHotel_Message_Title {
-    font-size: x-large;
-    color: rgb(0, 113, 194);
-    align-self: flex-start;
-    width: 500px;
-}
-
-.RightCol_EachHotel_Message_Rate {
-    height: 40px;
-    align-self: flex-end;
-    background-color: blue;
-    color: white;
-    font-weight: bold;
-
-}
-
-.RightCol_EachHotel_Message_Depict {
-    border-left: 1px solid rgb(231,231,231);
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
-    margin-left: 15px;
+.RightCol_SecondRow {
     margin-top: 15px;
-    width: 500px;
-    height: 110px;
 }
 
-.RightCol_EachHotel_Message_ReserveButton{
-    margin-left: 440px;
-    width: 130px;
-    height: 40px;
-    background-color:rgb(0,113,194);
+.HotelPicture_TopLeft {
+    width: 240px;
+    height: 170px;
+}
+
+.HotelPicture_DownLeft {
+    margin-top: 10px;
+    width: 240px;
+    height: 170px;
+}
+
+.HotelPicture_Right {
+    width: 540px;
+    height: 350px;
+    margin-left: 10px;
+}
+
+.ReservePart {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.ReserveTableTitle {
+    font-size: x-large;
+}
+
+.ReserveTable_Head {
+    background-color: rgb(76, 118, 178);
     color: white;
-    font-weight: bolder;
+    height: 35px;
 }
 
+.ReserveTable_RoomStyle {
+    width: 370px;
+
+}
+
+.ReserveTable_PeopleNumber {
+    width: 60px;
+}
+
+.ReserveTable_Price {
+    width: 80px;
+}
+
+.ReserveTable_Note {
+    width: 140px;
+}
 </style>
