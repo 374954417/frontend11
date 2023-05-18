@@ -50,7 +50,7 @@ export default {
 <style>
 .WholeLayout {
     background-color: rgb(0, 53, 128);
-    margin-bottom: 35px;
+    /* margin-bottom: 35px; */
     height: 130px;
     display: flex;
     min-width: 1200px;
