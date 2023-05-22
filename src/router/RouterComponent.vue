@@ -7,12 +7,12 @@
                 <b class="Title">Booking.com</b>
 
                 <div v-if="!this.$store.state.is_login" class="ButtonPosition">
-                    <el-button class="RegisterButton">
+<!--                    <el-button class="RegisterButton">-->
+<!--                        注册/登录-->
+<!--                    </el-button>-->
+                    <el-button class="LoginButton" @click="navigatorToLogin">
                         注册/登录
                     </el-button>
-<!--                    <el-button class="LoginButton" @click="navigatorToLogin">-->
-<!--                        登录-->
-<!--                    </el-button>-->
                 </div>
                 <div v-else class="ButtonPosition">
                   <el-button class="userInfo" @click="displayOrder">
@@ -42,7 +42,10 @@
 // import router from "@/router/index";
 
 export default {
-    methods: {
+  // mounted() {
+  //   this.$router.push('/living')
+  // },
+  methods: {
         navigateToLiving() {
             // this.$router.push('/living');
           this.$router.push({

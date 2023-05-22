@@ -16,6 +16,7 @@ const router = createRouter({
     { path: '/living' , component: Homepage },
     { path: '/login', component: LoginViewVue },
     { path: '/living/reverse/confirm', component: BookingViewVue},
+    { path: '/', redirect: '/living'},
 
     // { path: '/booking', component: BookingViewVue },
 

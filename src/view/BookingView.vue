@@ -515,6 +515,8 @@ export default {
               if(response.data.code===405)
               {
                 this.$toast.success("预订成功！",{position:"top"});
+
+                this.$router.push('/living')
               }
             })
             .catch(function (error) {
