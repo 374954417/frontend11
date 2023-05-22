@@ -8,11 +8,11 @@
 
                 <div v-if="!this.$store.state.is_login" class="ButtonPosition">
                     <el-button class="RegisterButton">
-                        注册
+                        注册/登录
                     </el-button>
-                    <el-button class="LoginButton" @click="navigatorToLogin">
-                        登录
-                    </el-button>
+<!--                    <el-button class="LoginButton" @click="navigatorToLogin">-->
+<!--                        登录-->
+<!--                    </el-button>-->
                 </div>
                 <div v-else class="ButtonPosition">
                   <el-button class="userInfo" @click="displayOrder">
