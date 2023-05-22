@@ -66,35 +66,41 @@
                         </el-option>
                     </el-select>
 
-                    <div class="RightCol_EachHotel" v-for="(option, index) in hotelInfo" :key="index">
+                    <div class="RightCol_EachHotel" v-for="(option, index) in hotelInfo.slice((currpage-1)*eachpage,currpage*eachpage)" :key="index">
                         <el-row>
                             <el-col :span="6.5">
-                                <img :src="option.imgSrc" class="RightCol_EachHotel_Photo" />
+                                <img :src="option.largeImg" class="RightCol_EachHotel_Photo" />
                             </el-col>
                             <el-col :span="17.5">
                                 <el-row class="RightCol_EachHotel_Message">
                                     <el-col :span="22" class="RightCol_EachHotel_Message_Title">
-                                        <b>{{ option.name }}</b>
+                                        <b>{{ option.hname }}</b>
                                     </el-col>
                                     <el-col :span="2">
                                         <el-button class="RightCol_EachHotel_Message_Rate">
-                                            {{ option.rate }}
+                                            {{ option.score }}
                                         </el-button>
                                     </el-col>
                                 </el-row>
                                 <el-row class="RightCol_EachHotel_Message_Depict">
                                     <div style="margin-left: 10px;">
-                                        {{option.depict}}
+                                        {{option.haddress}}
                                     </div>
                                 </el-row>
                                 <el-row>
-                                    <el-button class="RightCol_EachHotel_Message_ReserveButton" @click="ConvertToReserve(index)">
+                                    <el-button class="RightCol_EachHotel_Message_ReserveButton" @click="ConvertToReserve(option.hid,index)">
                                         查看可定选项<span>&nbsp;&nbsp;&nbsp;</span>>
                                     </el-button>
                                 </el-row>
                             </el-col>
                         </el-row>
                     </div>
+                  <div style="float:right;margin-right:50px;margin-top: 50px">
+                    <el-button v-if="currpage>1" @click="currpage--">上一页</el-button>
+                    <span>{{currpage}}</span>/<span>{{pagesum}}</span>
+                    <el-button v-if="currpage<pagesum" @click="currpage++">下一页</el-button>
+                  </div>
+
                 </el-col>
             </el-row>
         </div>
@@ -109,6 +115,9 @@ export default {
 
     data() {
         return {
+            pagesum:0, //总页数
+            currpage:1, //当前页数
+            eachpage:5, //每页行数
             destination: '中国',
             count: 0,
             inDate: '',
@@ -131,9 +140,9 @@ export default {
             choose: 0,
 
             hotelInfo: [
-                { imgSrc: "土拨鼠.jpg", name: "balabala", rate: 7.8, depict: "这是一个非常好的宾馆豪华客房\
-1张大号双人床\
-该价格的客房在我们网站上仅剩4间" },
+                // {
+                //
+                // },
             ]
 
         }
@@ -156,7 +165,60 @@ export default {
 
         }
     },
+
+
+    mounted(){
+      this.destinationvar = this.$route.query.destination
+      this.checkinvar = this.$route.query.checkin
+      this.checkoutvar= this.$route.query.checkout
+      this.checkinfovar = this.$route.query.checkinfo
+
+      this.destination=this.destinationvar
+      // this.destination.setText(this.destinationvar)
+      this.inDate=this.checkinvar
+      this.outDate=this.checkoutvar
+
+      console.log('destination', this.destinationvar)
+      console.log('checkin', this.checkinvar)
+      console.log('checkout', this.checkoutvar)
+      console.log('checkinfo', this.checkinfovar)
+
+      this.$http.get('/living', {
+        params: {
+          target:this.destinationvar
+        }
+      })
+          .then((response)=> {
+            console.log(response);
+            this.hotelInfo=response.data.data;
+            this.count=this.hotelInfo.length;
+            this.pagesum=Math.ceil(this.count/this.eachpage)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+
+    },
     methods: {
+      // destination:this.destination,
+      // checkin:this.date[0],
+      // checkout:this.date[1],
+      // checkinfo:this.checkInInfo[0].value
+        getRouteInfo()
+        {
+          this.destination = this.$route.params.destination
+          this.checkin = this.$route.params.checkin
+          this.checkout = this.$route.params.checkout
+          this.checkinfo = this.$route.params.checkinfo
+          console.log('destination', this.destination)
+          console.log('checkin', this.checkin)
+          console.log('checkout', this.checkout)
+          console.log('checkinfo', this.checkinfo)
+        },
+
+
         Increment(idx) {
             ++this.checkInInfo[idx].value
         },
@@ -171,10 +233,31 @@ export default {
             // 搜特价
         },
 
-        ConvertToReserve(index){
+        ConvertToReserve(hidvar,index){
             this.choose = index;
             // + this.hotelInfo[this.choose].name
-            this.$router.push("/living/reverse" );
+            // this.$router.push("/living/reverse" );
+          this.$router.push({
+                path:'/living/reverse',
+                query:{
+                  destination:this.destinationvar,
+                  checkin:this.checkinvar,
+                  checkout:this.checkoutvar,
+                  hid:hidvar,
+                  hname: this.hotelInfo[index].hname,
+                  haddress: this.hotelInfo[index].haddress,
+                  province: this.hotelInfo[index].province,
+                  city: this.hotelInfo[index].city,
+                  score: this.hotelInfo[index].score,
+                  // largeImg: "https://ac-a.static.booking.cn/xdata/images/hotel/max1024x768/66415503.jpg?k=52f2b0bdee1fcf6f3d39827c54db90158c1d350e1847127c9125736527a83107&o=&hp=1",
+                  // midImg: "https://ac-a.static.booking.cn/xdata/images/hotel/max500/66415508.jpg?k=0518aea49dbe3aff8dc26f9f123bc302a7a3bddb21eb7d2885afc1a333274432&o=&hp=1",
+                  // midImg2: "https://ac-a.static.booking.cn/xdata/images/hotel/max500/72143254.jpg?k=f6c0e62f9439b53c0bfa1cdc43be325b4bf2ce8ed5648041525aff7052d28370&o=&hp=1"
+                  largeImg:this.hotelInfo[index].largeImg,
+                  midImg:this.hotelInfo[index].midImg,
+                  midImg2:this.hotelInfo[index].midImg2,
+                }
+              }
+          )
         }
 
     },

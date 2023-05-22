@@ -39,7 +39,7 @@
             >
             <!-- 登录注册按钮 -->
             <div v-show="isShow" class="btnArea">
-                <el-button type="success" round style="background-color: #257B5E;letter-spacing: 5px" @click="UserLogin"  >登录</el-button>
+                <el-button type="success" round style="background-color: #257B5E;letter-spacing: 5px" @click="loginRequest"  >登录</el-button>
             </div>
             </transition>
         </div>
@@ -82,18 +82,9 @@
                     确&nbsp;认&nbsp;密&nbsp;码:
                     <el-input placeholder="请再次输入密码" style="width: 165px;margin-left: 10px;height: 40px" v-model="regUser.regRePwd" show-password></el-input>
                 </div>
-                <div style="flex: 1;display: flex;align-items: center">
-                    管理员审核:
-                    <template>
-                    <el-select id="elselect"  v-model="regUser.selectValue" filterable style="width: 100px;margin-left: 10px"  placeholder="请选择">
-                        <el-option
-                                v-for="item in admins"
-                                :key="item.id"
-                                :label="item.nickname"
-                                :value="item.id">
-                        </el-option>
-                    </el-select>
-                </template>
+                <div style="flex: 1;display: flex;justify-content: center;align-items: center;">
+                  手&nbsp;机&nbsp;号&nbsp;码:
+                  <el-input placeholder="手机号" style="width: 165px;margin-left: 10px;height: 40px" v-model="regUser.phoneNumber" show-password></el-input>
                 </div>
             </div>
             </transition>
@@ -187,7 +178,7 @@ export default {
                 regUsername:'',
                 regRePwd:'',
                 regPwd:'',
-                selectValue:"",
+                phoneNumber:"",
             },
             styleObj:{
                 bordertoprightradius:'15px',
@@ -201,6 +192,89 @@ export default {
         }
     },
   methods:{
+      postData(){
+        this.$http.get('/user')
+            .then( (response)=> {
+              console.log(response);
+              // this.$store.commit('increment')
+              // console.log(this.$store.state.count)
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+      loginRequest()
+      {
+        // this.$toast.warning('账号不存在！',{position:"top"});
+        console.log(this.loginUser.name)
+        this.$http.post('/login/login', {
+          "uid": 12,
+          "uname": this.loginUser.name,
+          "sex": "string",
+          "age": 0,
+          "phone_number": "string",
+          "pwd": this.loginUser.password
+        })
+            .then((response)=> {
+              console.log(response);
+              console.log(typeof response.data.code);
+              if(response.data.code === 101){
+                this.$toast.warning('账号不存在！',{position:"top"});
+              }
+              else if(response.data.code === 102){
+                this.$toast.warning('密码错误！',{position:"top"});
+              }
+              else if(response.data.code === 103){
+                this.$toast.warning('登陆成功！',{position:"top"});
+                this.$store.commit("login",this.loginUser.name);
+                console.log(this.$store.state.uname);
+                this.$router.push('/living')
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      },
+
+    registerRequest()
+    {
+
+      if(this.regUser.regRePwd !== this.regUser.regPwd)
+      {
+        this.$toast.warning('两次密码不一致！',{position:"top"});
+      }
+      // this.$toast.warning('账号不存在！',{position:"top"});
+      // console.log(this.loginUser.name)
+      this.$http.post('/login/login', {
+        "uid": 12,
+        "uname": this.loginUser.name,
+        "sex": "string",
+        "age": 0,
+        "phone_number": "string",
+        "pwd": this.loginUser.password
+      })
+          .then((response)=> {
+            console.log(response);
+            console.log(typeof response.data.code);
+            if(response.data.code === 101){
+              this.$toast.warning('账号不存在！',{position:"top"});
+            }
+            else if(response.data.code === 102){
+              this.$toast.warning('密码错误！',{position:"top"});
+            }
+            else if(response.data.code === 103){
+              this.$toast.warning('登陆成功！',{position:"top"});
+              this.$store.commit("login",this.loginUser.name);
+              console.log(this.$store.state.uname);
+              this.$router.push('/living')
+
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },
+
     changeToRegiest(){
       this.styleObj.bordertoprightradius= '0px'
       this.styleObj.borderbottomrightradius='0px'

@@ -6,13 +6,18 @@
             <el-row class="FirstRow">
                 <b class="Title">Booking.com</b>
 
-                <div class="ButtonPosition">
+                <div v-if="!this.$store.state.is_login" class="ButtonPosition">
                     <el-button class="RegisterButton">
                         注册
                     </el-button>
                     <el-button class="LoginButton" @click="navigatorToLogin">
                         登录
                     </el-button>
+                </div>
+                <div v-else class="ButtonPosition">
+                  <el-button class="userInfo" @click="displayOrder">
+                    用户信息
+                  </el-button>
                 </div>
             </el-row>
             <el-row class="SecondRow">
@@ -34,10 +39,18 @@
 <script>
 
 
+// import router from "@/router/index";
+
 export default {
     methods: {
         navigateToLiving() {
-            this.$router.push('/living');
+            // this.$router.push('/living');
+          this.$router.push({
+              path:'/living',
+              query: {
+                page: '1'
+              }
+          })
         },
 
         navigatorToView() {
@@ -46,6 +59,13 @@ export default {
 
         navigatorToLogin(){
             this.$router.push('/login');
+        },
+
+        displayOrder()
+        {
+          console.log(typeof this.$store.state.is_login);
+          console.log(typeof 0);
+          console.log(this.$store.is_login === 0);
         }
     }
 }

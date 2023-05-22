@@ -5,6 +5,7 @@ import ReserveComponentVue from '@/components/ReserveComponent.vue';
 
 import Homepage from "@/components/HomePage.vue";
 import LoginViewVue from '@/view/LoginView.vue';
+import BookingViewVue from '@/view/BookingView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,8 +13,11 @@ const router = createRouter({
 
     { path: '/living/reverse', component: ReserveComponentVue },
     { path: '/view', component: SearchLivingVue },
-    { path: '/living', component: Homepage },
+    { path: '/living' , component: Homepage },
     { path: '/login', component: LoginViewVue },
+    { path: '/living/reverse/confirm', component: BookingViewVue},
+
+    // { path: '/booking', component: BookingViewVue },
 
   ]
 })

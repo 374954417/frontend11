@@ -169,6 +169,10 @@ export default {
       }
   },
   methods: {
+      GetData()
+      {
+        console.log(this.$router.query)
+      },
       Increment(idx) {
           ++this.checkInInfo[idx].value
       },

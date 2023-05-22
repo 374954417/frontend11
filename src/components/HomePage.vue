@@ -105,6 +105,21 @@ export default {
         },
         SearchInfo_OkButton() {
             // 搜特价
+          // this.GetData();
+          this.$router.push({
+            path:'/view',
+            query:{
+              destination:this.destination,
+              checkin:this.date[0],
+              checkout:this.date[1],
+              checkinfo:this.checkInInfo[0].value
+            }
+              }
+          )
+          // console.log(this.$route.query.page);
+          // this.$store.commit('increment')
+          // console.log(this.$store.state.count)
+          // console.log(111)
         }
     },
 };

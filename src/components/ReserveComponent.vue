@@ -81,48 +81,47 @@
             <el-row>
                 <table>
                     <tr class="ReserveTable_Head">
-                        <td class="ReserveTable_RoomStyle">
+                        <th class="ReserveTable_RoomStyle">
                             <div style="margin-left: 5px;">客房类型</div>
-                        </td>
-                        <td class="ReserveTable_PeopleNumber">
+                        </th>
+                        <th class="ReserveTable_PeopleNumber">
                             <div style="margin-left: 5px;">客人数</div>
-                        </td>
-                        <td class="ReserveTable_Price">
+                        </th>
+                        <th class="ReserveTable_Price">
                             <div style="margin-left: 5px;">今日价格</div>
-                        </td>
-                        <td class="ReserveTable_Note">
+                        </th>
+                        <th class="ReserveTable_Note">
                             <div style="margin-left: 5px;">预定须知</div>
-                        </td>
-                        <td style="width: 420px;">
-                        </td>
+                        </th>
+                        <th style="width: 420px;">
+                          <div style="margin-left: 5px;">预定</div>
+                        </th>
 
                     </tr>
 
-                    <template v-for="(room, index) in this.reserveTableData" :key="index">
-                        <tr>
-                            <td class="ReserveTable_RoomStyle">
-                                <div style="margin-left: 5px;">
-                                    客房类型
-                                </div>
-                            </td>
-                            <td class="ReserveTable_PeopleNumber">
-                                <div style="margin-left: 5px;">
-                                    客人数
-                                </div>
-                            </td>
-                            <td class="ReserveTable_Price">
-                                <div style="margin-left: 5px;">
-                                    今日价格
-                                </div>
-                            </td>
-                            <td class="ReserveTable_Note">
-                                <div style="margin-left: 5px;">
-                                    预定须知
-                                </div>
-                            </td>
-                        </tr>
-                    </template>
+                    <tr v-for="(room, index) in this.line" :key="index">
+                      <td v-if="room.is_head" :rowspan="room.rownum">
+                        {{room.rname}}
+                      </td>
+                      <td>
+                        {{room.pnum}}
+                      </td>
+                      <td>
+                        {{room.price}}
+                      </td>
+                      <td>
+                        {{ room.feature1 }}
+                      </td>
+                      <td>
+                        <el-button @click="reserve_tar_subroom(index)">
+                          预订
+                        </el-button>
+                      </td>
+                    </tr>
+<!--                  <template v-for="(room,index) in roomInfo" :key="index">-->
 
+
+<!--                  </template>-->
                 </table>
             </el-row>
         </div>
@@ -131,6 +130,8 @@
 </template>
   
 <script>
+
+import clone from "clone";
 
 export default {
     data() {
@@ -154,11 +155,12 @@ export default {
 1张大号双人床\
 该价格的客房在我们网站上仅剩4间" },
             ],
-
+            line:[],
+            roomInfo:[],
             hotelPicture: [
-                "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
-                "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
-                "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
+                // "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
+                // "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
+                // "https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o=",
             ],
 
             reserveTableData: [
@@ -182,7 +184,126 @@ export default {
         },
 
     },
-    methods: {
+  mounted(){
+    this.destinationvar = this.$route.query.destination
+    this.checkinvar = this.$route.query.checkin
+    this.checkoutvar= this.$route.query.checkout
+    this.hid = this.$route.query.hid
+    this.hname=this.$route.query.hname
+    this.haddress=this.$route.query.haddress
+    this.province=this.$route.query.province
+    this.city=this.$route.query.city
+    this.score=this.$route.query.score
+    this.largeImg=this.$route.query.largeImg
+    this.midImg=this.$route.query.midImg
+    this.midImg2=this.$route.query.midImg2
+
+
+
+
+
+    this.destination=this.destinationvar
+    // this.destination.setText(this.destinationvar)
+    this.inDate=this.checkinvar
+    this.outDate=this.checkoutvar
+    // console.log(this.$route.query.infoItem)
+
+    this.hotelPicture[2]=this.$route.query.largeImg;
+    this.hotelPicture[1]=this.$route.query.midImg;
+    this.hotelPicture[0]=this.$route.query.midImg2;
+
+    console.log('destination', this.destinationvar)
+    console.log('checkin', this.checkinvar)
+    console.log('checkout', this.checkoutvar)
+    console.log('hid', this.hid)
+
+    // this.$http.get('/living', {
+    //   params:{
+    //     target
+    //   }
+    // })
+    //     .then((response)=> {
+    //       console.log(response);
+    //       this.hotelPicture[2]=response.data.data.largeImg;
+    //       this.hotelPicture[1]=response.data.data.midImg2;
+    //       this.hotelPicture[0]=response.data.data.midImg;
+    //       // this.hotelInfo=response.data.data;
+    //       // this.count=this.hotelInfo.length;
+    //       // this.pagesum=Math.ceil(this.count/this.eachpage)
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+
+    this.$http.post('/living/room', {
+      "hid": this.hid.toString(),
+      "hname": "string",
+      "haddress": "string",
+      "province": "string",
+      "city": "string",
+      "score": "string",
+      "largeImg": "string",
+      "midImg": "string",
+      "midImg2": "string"
+    })
+        .then((response)=> {
+          console.log(response);
+          // this.hotelPicture[2]=response.data.data.largeImg;
+          // this.hotelPicture[1]=response.data.data.midImg2;
+          // this.hotelPicture[0]=response.data.data.midImg;
+          // this.hotelInfo=response.data.data;
+          // this.count=this.hotelInfo.length;
+          // this.pagesum=Math.ceil(this.count/this.eachpage)
+          this.roomInfo=response.data.data
+
+          this.line=[]
+
+          let temp={
+            is_head:false,
+            rownum:0,
+            rid:'',
+            hid:'',
+            rname:'',
+            shortdesc:'',
+            srid:'',
+            price:'',
+            pnum:'',
+            feature1:'',
+            feature2:'',
+            feature3:''
+
+          }
+          for(let i=0;i<this.roomInfo.length;i++)
+          {
+             for(let j=0;j<this.roomInfo[i].subrooms.length;j++)
+             {
+               if(j===0){
+                 temp.is_head=true;
+                 temp.rownum=this.roomInfo[i].subrooms.length;
+               }
+               else {temp.is_head=false}
+               temp.rid=this.roomInfo[i].room.rid;
+               temp.hid=this.roomInfo[i].room.hid;
+               temp.rname=this.roomInfo[i].room.rname;
+               temp.shortdesc=this.roomInfo[i].room.shortdesc;
+               temp.srid=this.roomInfo[i].subrooms[j].srid;
+               temp.price=this.roomInfo[i].subrooms[j].price;
+               temp.pnum=this.roomInfo[i].subrooms[j].pnum;
+               temp.feature1=this.roomInfo[i].subrooms[j].feature1;
+               temp.feature2=this.roomInfo[i].subrooms[j].feature2;
+               temp.feature3=this.roomInfo[i].subrooms[j].feature3;
+               this.line.push(clone(temp))
+             }
+
+          }
+          console.log(this.line)
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  },
+  methods: {
         Increment(idx) {
             ++this.checkInInfo[idx].value
         },
@@ -195,6 +316,39 @@ export default {
         },
         SearchInfo_OkButton() {
             // 搜特价
+        },
+        reserve_tar_subroom(index){
+
+          console.log(this.line[index]);
+
+          this.$router.push({
+                path:'/living/reverse/confirm',
+                query:{
+                  // destination:this.destinationvar,
+                  // checkin:this.checkinvar,
+                  // checkout:this.checkoutvar,
+                  // hid:this.hid,
+                  // hname: this.hotelInfo[index].hname,
+                  // haddress: this.hotelInfo[index].haddress,
+                  // province: this.hotelInfo[index].province,
+                  // city: this.hotelInfo[index].city,
+                  // score: this.hotelInfo[index].score,
+                  // // largeImg: "https://ac-a.static.booking.cn/xdata/images/hotel/max1024x768/66415503.jpg?k=52f2b0bdee1fcf6f3d39827c54db90158c1d350e1847127c9125736527a83107&o=&hp=1",
+                  // // midImg: "https://ac-a.static.booking.cn/xdata/images/hotel/max500/66415508.jpg?k=0518aea49dbe3aff8dc26f9f123bc302a7a3bddb21eb7d2885afc1a333274432&o=&hp=1",
+                  // // midImg2: "https://ac-a.static.booking.cn/xdata/images/hotel/max500/72143254.jpg?k=f6c0e62f9439b53c0bfa1cdc43be325b4bf2ce8ed5648041525aff7052d28370&o=&hp=1"
+                  // largeImg:this.hotelInfo[index].largeImg,
+                  // midImg:this.hotelInfo[index].midImg,
+                  // midImg2:this.hotelInfo[index].midImg2,
+                  //
+                  rid:this.line[index].srid,
+                  hid:this.hid,
+                  uid:this.$store.state.uname,
+                  checkin:this.checkinvar,
+                  checkout:this.checkoutvar,
+                  price:this.line[index].price
+                }
+              }
+          )
         }
     },
 
@@ -366,5 +520,10 @@ export default {
 
 .ReserveTable_Note {
     width: 140px;
+}
+table,th,td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 6px;
 }
 </style>

@@ -1,9 +1,8 @@
 <template>
-  <!--<LoginView>123</LoginView>
-    <SearchLiving></SearchLiving>
-    <ReserveComponent></ReserveComponent>
-  -->
-  
+<!--<LoginView>123</LoginView>-->
+<!--    <SearchLiving></SearchLiving>-->
+<!--    <ReserveComponent></ReserveComponent>-->
+<!--  <BookingView></BookingView>-->
   <RouterComponent></RouterComponent>
 </template>
 
@@ -13,6 +12,7 @@
 // import SearchLiving from "./components/SearchLiving.vue";
 import RouterComponent from "./router/RouterComponent"
 //import ReserveComponent from './components/ReserveComponent.vue';
+// import BookingView from "@/view/BookingView.vue";
 
 export default {
   name: 'App',
@@ -22,6 +22,7 @@ export default {
     // SearchLiving,
     RouterComponent,
     //ReserveComponent
+    // BookingView
   },
 }
 </script>
