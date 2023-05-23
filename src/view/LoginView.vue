@@ -96,7 +96,7 @@
             >
 <!--            注册按钮-->
             <div  v-show="!isShow" class="registBtn">
-                <el-button type="success" round style="background-color: #257B5E;letter-spacing: 5px" @click="userRegister">注册</el-button>
+                <el-button type="success" round style="background-color: #257B5E;letter-spacing: 5px" @click="registerRequest">注册</el-button>
             </div>
             </transition>
         </div>
@@ -242,31 +242,32 @@ export default {
       if(this.regUser.regRePwd !== this.regUser.regPwd)
       {
         this.$toast.warning('两次密码不一致！',{position:"top"});
+        return;
       }
       // this.$toast.warning('账号不存在！',{position:"top"});
       // console.log(this.loginUser.name)
-      this.$http.post('/login/login', {
-        "uid": 12,
-        "uname": this.loginUser.name,
+      this.$http.post('/login/register', {
+        "uid": Math.ceil(Math.random()*10000),
+        "uname": this.regUser.regUsername,
         "sex": "string",
         "age": 0,
-        "phone_number": "string",
-        "pwd": this.loginUser.password
+        "phone_number": this.regUser.phoneNumber,
+        "pwd": this.regUser.regPwd
       })
           .then((response)=> {
             console.log(response);
             console.log(typeof response.data.code);
-            if(response.data.code === 101){
-              this.$toast.warning('账号不存在！',{position:"top"});
+            if(response.data.code === 104){
+              this.$toast.warning('账号存在！',{position:"top"});
             }
-            else if(response.data.code === 102){
-              this.$toast.warning('密码错误！',{position:"top"});
+            else if(response.data.code === 105){
+              this.$toast.warning('注册成功！',{position:"top"});
             }
-            else if(response.data.code === 103){
-              this.$toast.warning('登陆成功！',{position:"top"});
-              this.$store.commit("login",this.loginUser.name);
-              console.log(this.$store.state.uname);
-              this.$router.push('/living')
+            else if(response.data.code === 106){
+              this.$toast.warning('未知错误！',{position:"top"});
+              // this.$store.commit("login",this.loginUser.name);
+              // console.log(this.$store.state.uname);
+              // this.$router.push('/living')
 
             }
           })
