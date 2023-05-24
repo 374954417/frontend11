@@ -46,10 +46,11 @@
                 <el-col :span="18">
                     <el-row class="RightCol_FisrtRow">
                         <el-col span="18">
-                            <b class="RightCol_FirstRow_HotelName">{{ this.hotelInfo.name }}</b>
+                            <b class="RightCol_FirstRow_HotelName">{{hname}}</b>
+                            <div>{{haddress}}</div>
                         </el-col>
                         <el-col span="6">
-                            <div class="RightCol_FirstRow_HotelRate">{{ this.hotelInfo.rate }}</div>
+                            <div class="RightCol_FirstRow_HotelRate">{{ score }}</div>
                         </el-col>
                     </el-row>
 
@@ -91,10 +92,10 @@
                             <div style="margin-left: 5px;">今日价格</div>
                         </th>
                         <th class="ReserveTable_Note">
-                            <div style="margin-left: 5px;">预定须知</div>
+                            <div style="margin-left: 5px;">预订须知</div>
                         </th>
                         <th style="width: 420px;">
-                          <div style="margin-left: 5px;">预定</div>
+                          <div style="margin-left: 5px;">预订</div>
                         </th>
 
                     </tr>
@@ -102,6 +103,22 @@
                     <tr v-for="(room, index) in this.line" :key="index">
                       <td v-if="room.is_head" :rowspan="room.rownum">
                         {{room.rname}}
+                        <br/>
+                        {{room.shortdesc}}
+                        <br/>
+
+                        <span v-for="(att,ind) in room.attrs" :key="ind" class="hprt-facilities-facility" data-name-en="Hair Dryer">
+                            <span class=" other_facility_badge--default_color">
+                              <svg class="bk-icon -streamline-checkmark" fill="#008009" height="14" width="14" viewBox="0 0 128 128" role="presentation" aria-hidden="true" focusable="false">
+                                <path d="M56.33 100a4 4 0 0 1-2.82-1.16L20.68 66.12a4 4 0 1 1 5.64-5.65l29.57 29.46 45.42-60.33a4 4 0 1 1 6.38 4.8l-48.17 64a4 4 0 0 1-2.91 1.6z">
+                                </path>
+                              </svg>{{att}}
+                            </span>
+                        </span>
+
+
+
+
                       </td>
                       <td>
                         {{room.pnum}}
@@ -113,7 +130,7 @@
                         {{ room.feature1 }}
                       </td>
                       <td>
-                        <el-button @click="reserve_tar_subroom(index)">
+                        <el-button style="margin-left: 175px" @click="reserve_tar_subroom(index)">
                           预订
                         </el-button>
                       </td>
@@ -136,6 +153,9 @@ import clone from "clone";
 export default {
     data() {
         return {
+            score:'',
+            hname:'',
+            haddress:'',
             destination: '中国',
             inDate: '',
             outDate: '',
@@ -198,6 +218,10 @@ export default {
     this.midImg=this.$route.query.midImg
     this.midImg2=this.$route.query.midImg2
 
+    console.log("庄周")
+    console.log(this.hname)
+    // this.rname=this.$route.query.rname
+
 
 
 
@@ -244,7 +268,8 @@ export default {
       "score": "string",
       "largeImg": "string",
       "midImg": "string",
-      "midImg2": "string"
+      "midImg2": "string",
+      "attrs":"string"
     })
         .then((response)=> {
           console.log(response);
@@ -270,7 +295,10 @@ export default {
             pnum:'',
             feature1:'',
             feature2:'',
-            feature3:''
+            feature3:'',
+            hname:'',
+            attrs:[],
+
 
           }
           for(let i=0;i<this.roomInfo.length;i++)
@@ -280,6 +308,9 @@ export default {
                if(j===0){
                  temp.is_head=true;
                  temp.rownum=this.roomInfo[i].subrooms.length;
+                 let att_str=this.roomInfo[i].subrooms[j].attrs;
+                 if(att_str === "NAN"){temp.attrs=[];}
+                 else temp.attrs=att_str.split('&');
                }
                else {temp.is_head=false}
                temp.rid=this.roomInfo[i].room.rid;
@@ -288,10 +319,22 @@ export default {
                temp.shortdesc=this.roomInfo[i].room.shortdesc;
                temp.srid=this.roomInfo[i].subrooms[j].srid;
                temp.price=this.roomInfo[i].subrooms[j].price;
-               temp.pnum=this.roomInfo[i].subrooms[j].pnum;
-               temp.feature1=this.roomInfo[i].subrooms[j].feature1;
+               if(this.roomInfo[i].subrooms[j].pnum === '0') temp.pnum='2';
+               else temp.pnum=this.roomInfo[i].subrooms[j].pnum;
+               if(this.roomInfo[i].subrooms[j].feature1==="含早早餐不错早餐不错"){temp.feature1="早餐不错"}
+               else if(this.roomInfo[i].subrooms[j].feature1==="含早早餐很好早餐很好"){temp.feature1="早餐很好"}
+               else if(this.roomInfo[i].subrooms[j].feature1==="含早早餐美味早餐美味"){temp.feature1="早餐美味"}
+               else if(this.roomInfo[i].subrooms[j].feature1==="含早早餐超棒早餐超棒"){temp.feature1="早餐超棒"}
+               else if(this.roomInfo[i].subrooms[j].feature1==="含早早餐超赞早餐超赞"){temp.feature1="早餐超赞"}
+               else temp.feature1=this.roomInfo[i].subrooms[j].feature1;
+               let reg=/可选早餐\d*元/
+               let res=temp.feature1.replace(reg,"") //将数字换为a
+               temp.feature1=res;
                temp.feature2=this.roomInfo[i].subrooms[j].feature2;
-               temp.feature3=this.roomInfo[i].subrooms[j].feature3;
+               if(this.roomInfo[i].subrooms[j].feature1 === "无需预付到店付款无需预付"){temp.feature1="到店付款无需预付";}
+               if(this.roomInfo[i].subrooms[j].feature2 === "无需预付到店付款无需预付"){temp.feature2="到店付款无需预付";}
+               if(this.roomInfo[i].subrooms[j].feature3 === "无需预付到店付款无需预付"){temp.feature3="到店付款无需预付";}
+               else temp.feature3=this.roomInfo[i].subrooms[j].feature3;
                this.line.push(clone(temp))
              }
 
@@ -339,13 +382,16 @@ export default {
                   // largeImg:this.hotelInfo[index].largeImg,
                   // midImg:this.hotelInfo[index].midImg,
                   // midImg2:this.hotelInfo[index].midImg2,
-                  //
                   rid:this.line[index].srid,
                   hid:this.hid,
                   uid:this.$store.state.uname,
                   checkin:this.checkinvar,
                   checkout:this.checkoutvar,
-                  price:this.line[index].price
+                  price:this.line[index].price,
+                  haddress:this.haddress,
+                  large_img:this.largeImg,
+                  hname:this.hname,
+                  rname:this.line[index].rname
                 }
               }
           )
@@ -358,7 +404,7 @@ export default {
 
 
 
-<style>
+<style scoped>
 .noteA {
     margin-top: 15px;
     font-size: 10px;

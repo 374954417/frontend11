@@ -48,11 +48,57 @@
                         </el-row>
                     </div>
 
-                    <div class="FliterMoney">
-                        <div class="FliterMoney_Note">
-                            <b>你的预算（每晚）</b>
-                        </div>
-                    </div>
+                      <div class="FliterMoney" style="height: fit-content">
+<el-row style="margin-top: 8px;margin-left: 18px">
+                              <b>你的预算（每晚）</b>
+</el-row>
+                            <el-col>
+                              <el-row class="checkbox_row">
+                              <el-checkbox v-model="priceAll" label="所有" size="large" />
+                              </el-row>
+                                <el-row class="checkbox_row">
+                              <el-checkbox v-model="price0_500" label="0元-500元" size="large" />
+                                </el-row>
+                                  <el-row class="checkbox_row">
+                              <el-checkbox v-model="price500_1000" label="500元-1000元" size="large" />
+                                  </el-row>
+                                    <el-row class="checkbox_row">
+                              <el-checkbox v-model="price1000_1500" label="1000元-1500元" size="large" />
+                                    </el-row>
+                                      <el-row class="checkbox_row">
+                              <el-checkbox v-model="price1500_2000" label="1500元-2000元" size="large" />
+                                      </el-row>
+                                        <el-row class="checkbox_row">
+                              <el-checkbox v-model="price2000" label="2000元以上" size="large" />
+                                        </el-row>
+                            </el-col>
+
+                      </div>
+
+                      <div class="FliterScore" style="height: fit-content">
+
+                          <el-row style="margin-left: 18px;margin-top: 8px">
+                          <b >酒店评分</b>
+                          </el-row>
+                          <el-col>
+                            <el-row class="checkbox_row">
+                              <el-checkbox v-model="scoreAll" label="所有" size="large" />
+                            </el-row>
+                            <el-row class="checkbox_row">
+                            <el-checkbox v-model="score4" label="2分-4分" size="large" />
+                            </el-row>
+                            <el-row class="checkbox_row">
+                            <el-checkbox v-model="score6" label="4分-6分" size="large" />
+                            </el-row>
+                              <el-row class="checkbox_row">
+                            <el-checkbox v-model="score8" label="6分-8分" size="large" />
+                              </el-row>
+                                <el-row class="checkbox_row">
+                            <el-checkbox v-model="score10" label="8分以上" size="large" />
+                                </el-row>
+                          </el-col>
+
+                      </div>
 
                 </el-col>
                 <el-col :span="18">
@@ -66,7 +112,7 @@
                         </el-option>
                     </el-select>
 
-                    <div class="RightCol_EachHotel" v-for="(option, index) in hotelInfo.slice((currpage-1)*eachpage,currpage*eachpage)" :key="index">
+                    <div class="RightCol_EachHotel" v-for="(option, index) in this.ComDataList.slice((currpage-1)*eachpage,currpage*eachpage)" :key="index">
                         <el-row>
                             <el-col :span="6.5">
                                 <img :src="option.largeImg" class="RightCol_EachHotel_Photo" />
@@ -85,6 +131,11 @@
                                 <el-row class="RightCol_EachHotel_Message_Depict">
                                     <div style="margin-left: 10px;">
                                         {{option.haddress}}
+                                    </div>
+                                  </el-row>
+                                <el-row>
+                                    <div style="margin-left: 20px;font-weight: bolder;font-size: 28px">
+                                      {{ option.eqprice}}元
                                     </div>
                                 </el-row>
                                 <el-row>
@@ -115,6 +166,20 @@ export default {
 
     data() {
         return {
+            priceAll:true,
+            price0_500:false,
+            price500_1000:false,
+            price1000_1500:false,
+            price1500_2000:false,
+            price2000:false,
+
+            scoreAll:true,
+            score2:false,
+            score4:false,
+            score6:false,
+            score8:false,
+            score10:false,
+
             pagesum:0, //总页数
             currpage:1, //当前页数
             eachpage:5, //每页行数
@@ -134,7 +199,9 @@ export default {
             sortBy: [
                 { value: 0, label: "热门推荐" },
                 { value: 1, label: "优先显示低价住宿" },
-                { value: 2, label: "住宿评级（从高到低）" },
+                { value: 2, label: "优先显示高价住宿" },
+                { value: 3, label: "住宿评级（从高到低）" },
+                { value: 4, label: "住宿评级（从低到高）" },
             ],
 
             choose: 0,
@@ -157,13 +224,40 @@ export default {
         spliceSortWay: {
             set(newValue) {
                 this.sortWay = newValue;
+                switch (newValue){
+                  case 0:
+                    this.hotelInfo.sort(function (a,b){return b.score-a.score;})
+                    break;
+                  case 1:
+                    this.hotelInfo.sort(function (a,b){return a.eqprice-b.eqprice;})
+                    break;
+                  case 2:
+                    this.hotelInfo.sort(function (a,b){return b.eqprice-a.eqprice;})
+                    break;
+                  case 3:
+                    this.hotelInfo.sort(function (a,b){return b.score-a.score;})
+                    break;
+                  case 4:
+                    this.hotelInfo.sort(function (a,b){return a.score-b.score;})
+                    break;
+                }
+
             },
 
             get() {
                 return "排序方式：" + this.sortBy[this.sortWay].label
             }
+        },
 
-        }
+
+        ComDataList(){
+        return this.hotelInfo.filter((item) => {
+          if((this.priceAll || this.is_in_price(item)) && (this.scoreAll || this.is_in_score(item))){
+            return item
+          }
+        })
+      },
+
     },
 
 
@@ -202,10 +296,67 @@ export default {
 
     },
     methods: {
+      is_0_500(item)
+      {
+        return item.eqprice > 0 && item.eqprice <= 500;
+      },
+      is_500_1000(item)
+      {
+        return item.eqprice > 5000 && item.eqprice <= 1000;
+      },
+      is_1000_1500(item)
+      {
+        return item.eqprice > 1000 && item.eqprice <= 1500;
+      },
+      is_1500_2000(item)
+      {
+        return item.eqprice > 1500 && item.eqprice <= 2000;
+      },
+      is_2000(item)
+      {
+        return item.eqprice > 2000;
+      },
+      is_in_price(item)
+      {
+        if(this.price0_500 && this.is_0_500(item)) return true;
+        if(this.price500_1000 && this.is_500_1000(item)) return true;
+        if(this.price1000_1500 && this.is_1000_1500(item)) return true;
+        if(this.price1500_2000 && this.is_1500_2000(item)) return true;
+        return this.price2000 && this.is_2000(item);
+      },
+      is2(item)
+      {
+        return item.score>0 && item.score<=2;
+      },
+      is4(item)
+      {
+        return item.score>2 && item.score<=4;
+      },
+      is6(item)
+      {
+        return item.score>4 && item.score<=6;
+      },
+      is8(item)
+      {
+        return item.score>6 && item.score<=8;
+      },
+      is10(item)
+      {
+        return item.score>8 && item.score<=10;
+      },
+      is_in_score(item)
+      {
+        if(this.score2 && this.is2(item)) return true;
+        if(this.score4 && this.is4(item)) return true;
+        if(this.score6 && this.is6(item)) return true;
+        if(this.score8 && this.is8(item)) return true;
+        return this.score10 && this.is10(item);
+      },
       // destination:this.destination,
       // checkin:this.date[0],
       // checkout:this.date[1],
       // checkinfo:this.checkInInfo[0].value
+
         getRouteInfo()
         {
           this.destination = this.$route.params.destination
@@ -334,12 +485,27 @@ export default {
     font-size: 15px;
     margin-left: 15px;
     margin-top: 10px;
+  height: fit-content;
 }
 
 .FliterMoney {
     border: 1px solid rgb(231, 231, 231);
-    width: 260px;
-    height: 235px;
+    width: 300px;
+    height: fit-content;
+}
+
+.FliterScore_Note {
+  font-size: 15px;
+  margin-left: 15px;
+  margin-top: 10px;
+  height: fit-content;
+}
+
+.FliterScore {
+
+  border: 1px solid rgb(231, 231, 231);
+  width: 260px;
+  height: fit-content;
 }
 
 .WholeLayout_Center {
@@ -425,7 +591,7 @@ export default {
     margin-left: 15px;
     margin-top: 15px;
     width: 500px;
-    height: 110px;
+    height: 80px;
 }
 
 .RightCol_EachHotel_Message_ReserveButton{
@@ -437,4 +603,7 @@ export default {
     font-weight: bolder;
 }
 
+.checkbox_row{
+  margin-left: 18px;
+}
 </style>

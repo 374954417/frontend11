@@ -15,7 +15,7 @@
                     </el-button>
                 </div>
                 <div v-else class="ButtonPosition">
-                  <el-button class="userInfo" @click="displayOrder">
+                  <el-button class="userInfo" @click="displayUserInfo">
                     用户信息
                   </el-button>
                 </div>
@@ -64,11 +64,12 @@ export default {
             this.$router.push('/login');
         },
 
-        displayOrder()
+        displayUserInfo()
         {
-          console.log(typeof this.$store.state.is_login);
-          console.log(typeof 0);
-          console.log(this.$store.is_login === 0);
+          this.$router.push('/user/order');
+          // console.log(typeof this.$store.state.is_login);
+          // console.log(typeof 0);
+          // console.log(this.$store.is_login === 0);
         }
     }
 }

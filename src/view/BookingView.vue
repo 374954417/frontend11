@@ -46,55 +46,14 @@
                     <el-divider />
 
                     <div class="sub-content">已选择：</div>
-                    <div>行政复式单间公寓</div>
-                    <div style="margin-top: 8px;">重新选择</div>
+                    <div>{{ rname }}</div>
                 </div>
                 <div class="border-box padding-16 mg-top-16">
-                    <div class="aside-title">价格汇总</div>
-                    <div class="flex-box justify-between">
-                        <div>原票价</div>
-                        <div>563.12元</div>
-                    </div>
-                    <div class="flex-box justify-between">
-                        <div>Genius会员折扣</div>
-                        <div>-56.31元</div>
-                    </div>
-                    <div>你是Genuis会员,现可享受优惠价格。</div>
                     <div class="discount-box flex-box justify-between align-center padding-16 mg-top-16">
                         <div class="price-text">价格</div>
                         <div>
-                            <div class="red-text text-right"><span
-                                    style="text-decoration: line-through;font-weight: 400; margin-right: 5px;">563元</span>优惠10%
-                            </div>
                             <div class="price-text text-right">506.81元</div>
-                            <div class="grey-text">+84元税费及其他费用</div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="aside-title">价格信息</div>
-                        <div class="flex-box">
-                            <div></div>
-                            <div>
-                                <div class="flex-box align-center mg-top-16">
-                                    <svg class="bk-icon -streamline-accounting_bills" height="20" width="20"
-                                        viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false">
-                                        <path
-                                            d="M4.125 8.25a.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5 1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5zm12.75 5.25a.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5 1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5zm2.625-3V15a.75.75 0 0 1-.75.75H2.25A.75.75 0 0 1 1.5 15V6a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 .75.75v4.5zm1.5 0V6a2.25 2.25 0 0 0-2.25-2.25H2.25A2.25 2.25 0 0 0 0 6v9a2.25 2.25 0 0 0 2.25 2.25h16.5A2.25 2.25 0 0 0 21 15v-4.5zm-8.25 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0zm1.5 0a3.75 3.75 0 1 0-7.5 0 3.75 3.75 0 0 0 7.5 0zM22.5 9v9a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 0 0 1.5h16.5A2.25 2.25 0 0 0 24 18V9a.75.75 0 0 0-1.5 0z">
-                                        </path>
-                                    </svg>
-                                    <span style="margin-left: 15px;">不含84.13元税费和其他费用</span>
-                                </div>
-                                <div class="flex-box justify-between grey-text mg-top-8">
-                                    <div class="">6%增值税</div>
-                                    <div>33.45元</div>
-                                </div>
-                                <div class="flex-box justify-between grey-text mg-top-8">
-                                    <div>10%住宿方服务费</div>
-                                    <div>50.68元</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mg-top-16">收起详情</div>
                     </div>
                 </div>
 
@@ -115,12 +74,11 @@
             <div class="main">
                 <div class="flex-box border-box padding-16 mg-bottom-16">
                     <div class="mg-right-16">
-                        <img src="https://cf.bstatic.com/xdata/images/hotel/square200/324247624.jpg?k=c64ca60cb16a66aed36453927c0138c02f7bec6733d05a0e1ccdad57a196e31a&o="
-                            width="160" height="160" alt="">
+                        <img :src="largeImg" width="160" height="160" alt="">
                     </div>
                     <div class="font-size-12">
                         <div class="flex-box align-center">
-                            <div style="margin-right: 10px">公寓式酒店</div>
+                            <div style="margin-right: 10px">酒店</div>
                             <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 3px" fill="#febb00" width="12"
                                 height="12" viewBox="0 0 24 24">
                                 <path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"></path>
@@ -143,15 +101,11 @@
                                 </path>
                             </svg>
                         </div>
-                        <div class="header-title">Modena by Fraser Putuo Shanghai</div>
-                        <div class="font-size-14 mg-top-16">上海, 普陀区, 铜川路58弄1号</div>
-                        <div class="green-text">位置很赞 — 9.0</div>
+                        <div class="header-title">{{ hname }}</div>
+                        <div class="font-size-14 mg-top-16">{{ haddress }}</div>
                         <div class="flex-box align-center mg-top-16">
                             <span class="degree flex-box align-center justify-center">9.0</span>
                             <span style="margin-left: 10px">好极了</span>
-                            <span class="grey-text">
-                                · 79条点评
-                            </span>
                         </div>
                         <div class="flex-box align-center">
                             <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 24 24">
@@ -179,16 +133,6 @@
                             </path>
                         </svg>
                         <span style="margin-left: 15px">保持灵活：2023年6月3日前（含）可免费取消，所以今天就锁定该好价吧!</span>
-
-                    </div>
-                    <div class="flex-box align-center mg-top-8">
-                        <svg class="bk-icon -streamline-checkmark_selected" fill="#008009" height="16" role="presentation"
-                            width="16" viewBox="0 0 128 128" aria-hidden="true" focusable="false">
-                            <path
-                                d="M56.62 93.54a4 4 0 0 1-2.83-1.18L28.4 67a4 4 0 1 1 5.65-5.65l22.13 22.1 33-44a4 4 0 1 1 6.4 4.8L59.82 91.94a4.06 4.06 0 0 1-2.92 1.59zM128 64c0-35.346-28.654-64-64-64C28.654 0 0 28.654 0 64c0 35.346 28.654 64 64 64 35.33-.039 63.961-28.67 64-64zm-8 0c0 30.928-25.072 56-56 56S8 94.928 8 64 33.072 8 64 8c30.914.033 55.967 25.086 56 56z">
-                            </path>
-                        </svg>
-                        <span style="margin-left: 15px">尽情独享整租套房！!</span>
 
                     </div>
                     <div class="flex-box align-center mg-top-8">
@@ -253,7 +197,7 @@
                 </div>
 
                 <div class="book-box border-box padding-16 mg-bottom-16">
-                    <div class="header-title">行政复式单间公寓</div>
+                    <div class="header-title">{{ rname }}</div>
                     <div class="flex-box align-center mg-top-16">
                         <svg class="bk-icon -streamline-checkmark_fill" fill="#008009" height="20" width="20"
                             viewBox="0 0 128 128" role="presentation" aria-hidden="true" focusable="false">
@@ -263,34 +207,7 @@
                         </svg>
                         <span class="weight-700" style="margin-left: 15px; color: #008009">2023年6月2日下午11:59前可免费取消</span>
                     </div>
-                    <div class="flex-box align-center mg-top-16">
-                        <svg class="bk-icon -streamline-no_smoking" fill="#333333" height="16" width="16"
-                            viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false">
-                            <path
-                                d="M19.5 9h2.25a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 0 0 1.5h7.5A2.25 2.25 0 0 0 24 12.75v-3a2.25 2.25 0 0 0-2.25-2.25H19.5a.75.75 0 0 0 0 1.5zM5.25 13.5h-1.5l.75.75v-6L3.75 9h7.5a.75.75 0 0 0 0-1.5h-7.5a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h1.5a.75.75 0 0 0 0-1.5zM15 12v2.25a.75.75 0 0 0 1.5 0V12a.75.75 0 0 0-1.5 0zM0 8.25v6a.75.75 0 0 0 1.5 0v-6a.75.75 0 0 0-1.5 0zm1.28 15.53l22.5-22.5A.75.75 0 0 0 22.72.22L.22 22.72a.75.75 0 1 0 1.06 1.06zM4.5.75A2.25 2.25 0 0 1 2.25 3 2.25 2.25 0 0 0 0 5.25a.75.75 0 0 0 1.5 0 .75.75 0 0 1 .75-.75A3.75 3.75 0 0 0 6 .75a.75.75 0 0 0-1.5 0z">
-                            </path>
-                        </svg>
-                        <span style="margin-left: 15px" class="grey-text">禁止吸烟</span>
-                    </div>
                     <div class="type-list flex-box mg-top-16">
-                        <div class="item flex-box align-center">
-                            <svg class="bk-icon -streamline-house-chimney-alt" fill="#008009" height="16" width="16"
-                                viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M3.004 13.923v8.25c0 .414.336.75.75.75h6a.75.75 0 0 0 .75-.75v-6a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v6c0 .414.336.75.75.75h6a.75.75 0 0 0 .75-.75v-8.25a.75.75 0 0 0-1.5 0v8.25l.75-.75h-6l.75.75v-6a2.25 2.25 0 0 0-2.25-2.25h-1.5a2.25 2.25 0 0 0-2.25 2.25v6l.75-.75h-6l.75.75v-8.25a.75.75 0 0 0-1.5 0zm-1.72-.97l10.19-10.189a.75.75 0 0 1 1.06 0l10.19 10.19a.75.75 0 1 0 1.06-1.061L13.595 1.703a2.25 2.25 0 0 0-3.181 0L.224 11.894a.75.75 0 0 0 1.06 1.06zm15.97-7.28v-1.5l-.75.75h3.75l-.75-.75v5.25a.75.75 0 0 0 1.5 0v-5.25a.75.75 0 0 0-.75-.75h-3.75a.75.75 0 0 0-.75.75v1.5a.75.75 0 0 0 1.5 0z">
-                                </path>
-                            </svg>
-                            <span>私人套房</span>
-                        </div>
-                        <div class="item flex-box align-center">
-                            <svg class="bk-icon -streamline-room_size" fill="#008009" height="16" width="16"
-                                viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M3.75 23.25V7.5a.75.75 0 0 0-1.5 0v15.75a.75.75 0 0 0 1.5 0zM.22 21.53l2.25 2.25a.75.75 0 0 0 1.06 0l2.25-2.25a.75.75 0 1 0-1.06-1.06l-2.25 2.25h1.06l-2.25-2.25a.75.75 0 0 0-1.06 1.06zM5.78 9.22L3.53 6.97a.75.75 0 0 0-1.06 0L.22 9.22a.75.75 0 1 0 1.06 1.06l2.25-2.25H2.47l2.25 2.25a.75.75 0 1 0 1.06-1.06zM7.5 3.75h15.75a.75.75 0 0 0 0-1.5H7.5a.75.75 0 0 0 0 1.5zM9.22.22L6.97 2.47a.75.75 0 0 0 0 1.06l2.25 2.25a.75.75 0 1 0 1.06-1.06L8.03 2.47v1.06l2.25-2.25A.75.75 0 1 0 9.22.22zm12.31 5.56l2.25-2.25a.75.75 0 0 0 0-1.06L21.53.22a.75.75 0 1 0-1.06 1.06l2.25 2.25V2.47l-2.25 2.25a.75.75 0 0 0 1.06 1.06zM10.5 13.05v7.2a2.25 2.25 0 0 0 2.25 2.25h6A2.25 2.25 0 0 0 21 20.25v-7.2a.75.75 0 0 0-1.5 0v7.2a.75.75 0 0 1-.75.75h-6a.75.75 0 0 1-.75-.75v-7.2a.75.75 0 0 0-1.5 0zm13.252 2.143l-6.497-5.85a2.25 2.25 0 0 0-3.01 0l-6.497 5.85a.75.75 0 0 0 1.004 1.114l6.497-5.85a.75.75 0 0 1 1.002 0l6.497 5.85a.75.75 0 0 0 1.004-1.114z">
-                                </path>
-                            </svg>
-                            <span>38 m²</span>
-                        </div>
                         <div class="item flex-box align-center">
                             <svg class="bk-icon -streamline-resort" fill="#008009" height="16" width="16"
                                 viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false">
@@ -318,30 +235,6 @@
                             </svg>
                             <span>私人浴室</span>
                         </div>
-                        <div class="item flex-box align-center">
-                            <svg class="bk-icon -streamline-food_and_drink" fill="#008009" height="16" width="16"
-                                viewBox="0 0 128 128" role="presentation" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M48.25 4v36a20.13 20.13 0 0 1-16 19.59V124a4 4 0 0 1-8 0V59.58A20.09 20.09 0 0 1 8.25 40V4a4 4 0 0 1 8 0v36a12 12 0 0 0 8 11.28V4a4 4 0 0 1 8 0v47.29a12.1 12.1 0 0 0 8-11.3V4a4 4 0 0 1 8 0zm65 120a4 4 0 0 1-4 4H77.28a4 4 0 0 1 0-8h12V95.7c-14.139-2.16-24.023-15.135-22.35-29.34l6-59.17a8 8 0 0 1 8-7.19h24.67a8 8 0 0 1 8 7.19l6 59.23c1.633 14.181-8.24 27.115-22.35 29.28V120h12a4 4 0 0 1 3.96 4zM80.89 8l-2.43 24H108l-2.4-24zM83 84.88A18.49 18.49 0 0 0 93.17 88h.15a18.48 18.48 0 0 0 10.17-3.12 18.48 18.48 0 0 0 8.12-17.59L108.85 40H77.64l-2.76 27.23A18.49 18.49 0 0 0 83 84.88z">
-                                </path>
-                            </svg>
-                            <span>迷你吧</span>
-                        </div>
-                    </div>
-                    <el-divider />
-                    <div class="weight-700">你的Genius会员礼遇</div>
-                    <div class="mg-top-16">
-                        <div class="flex-box">
-                            <svg class="bk-icon -streamline-checkmark_selected_fill" fill="#FEBB02" height="16"
-                                role="presentation" width="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12C23.992 5.376 18.624.008 12 0zm6.927 8.2l-6.845 9.289a1.011 1.011 0 0 1-1.43.188l-4.888-3.908a1 1 0 0 1 1.25-1.562l4.076 3.261 6.227-8.451a1 1 0 1 1 1.61 1.183z">
-                                </path>
-                            </svg>
-                            <div style="margin-left: 15px">10%折扣</div>
-                        </div>
-                        <div style="margin-left: 31px" class="grey-text font-size-12">此选项价格（不含税费和其他费用）可享10%优惠
-                        </div>
                     </div>
                     <el-divider />
                     <div class="flex-box weight-700">
@@ -363,11 +256,6 @@
                     <div>
                         <el-input v-model="fullname" placeholder="姓（拼音或英文）名（拼音或英文）" />
                     </div>
-                </div>
-                <div class="car-box border-box padding-16 mg-bottom-16">
-                    <div class="header-title">添加至住宿订单</div>
-                    <div><el-checkbox v-model="checked1" label="我打算租车自驾" size="large" /></div>
-                    <div class="grey-text font-size-12">让你的旅行更尽兴，在订单确认信中查看租车选择</div>
                 </div>
                 <div class="car-box border-box padding-16 mg-bottom-16">
                     <div class="header-title">您还有什么特别要求？</div>
@@ -398,13 +286,6 @@
                         </svg>
                         <span style="margin-left: 15px">24小时前台 - 随时提供帮助!</span>
                     </div>
-                    <div class="weight-700 mg-top-16">添加预计到店时间 （可选）</div>
-                    <div>
-                        <el-select v-model="arrival" class="m-2" size="large">
-                            <el-option v-for="(item, inds) in options" :key="inds" :label="item" :value="item" />
-                        </el-select>
-                    </div>
-                    <div class="grey-text">该时间为上海时间</div>
                 </div>
 
                 <div class="car-box border-box padding-16 mg-bottom-16">
@@ -420,14 +301,7 @@
                 </div>
                 <div class="flex-box justify-end mg-bottom-16">
                     <!-- <el-button icon="search">价格更放心</el-button> -->
-                    <div class="price-button flex-box align-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#0071c2" width="16" height="16" viewBox="0 0 24 24">
-                            <path
-                                d="M.311 2.56v6.257a3.75 3.75 0 0 0 1.098 2.651l11.56 11.562a2.25 2.25 0 0 0 3.182 0l6.88-6.88a2.25 2.25 0 0 0 0-3.181L11.468 1.408A3.75 3.75 0 0 0 8.818.31H2.56a2.25 2.25 0 0 0-2.25 2.25zm1.5 0a.75.75 0 0 1 .75-.75h6.257a2.25 2.25 0 0 1 1.59.659l11.562 11.56a.75.75 0 0 1 0 1.06l-6.88 6.88a.75.75 0 0 1-1.06 0L2.47 10.409a2.25 2.25 0 0 1-.659-1.59V2.56zm5.25 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm1.5 0a2.25 2.25 0 1 0-4.5 0 2.25 2.25 0 0 0 4.5 0z">
-                            </path>
-                        </svg>
-                        <span>价格更放心</span>
-                    </div>
+
 
                     <!-- <el-button class="next-button" type="primary">下一步：最终信息<el-icon class="el-icon--right">
                             <ArrowRight />
@@ -466,6 +340,13 @@ export default {
             textarea: '',
             arrival: '',
             options: ['不确定', '0:00 - 1:00', '1:00 - 2:00', '2:00 - 3:00'],
+            price: '',
+            checkinvar:'',
+            checkoutvar:'',
+            haddress:'',
+            largeImg:'',
+            hname:'',
+            rname:''
         }
     },
     mounted() {
@@ -476,6 +357,10 @@ export default {
       this.checkinvar=this.$route.query.checkin
       this.checkoutvar=this.$route.query.checkout
       this.price=this.$route.query.price
+      this.haddress=this.$route.query.haddress
+      this.largeImg=this.$route.query.large_img
+      this.hname=this.$route.query.hname
+      this.rname=this.$route.query.rname
 
     },
   methods: {

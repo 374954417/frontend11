@@ -12,8 +12,7 @@
                 <edit style="width: 1.5em; height: 1.5em; margin-right: 8px;"></edit>
             </template>
         </el-input>
-        <el-date-picker v-model="date" style="height: 40px; width: 335px; margin-left: 5px;" type="daterange"
-            range-separator="——" start-placeholder="开始日期" end-placeholder="结束日期">
+        <el-date-picker v-model="date" style="height: 40px; width: 335px; margin-left: 5px;" type="daterange" range-separator="——" start-placeholder="开始日期" end-placeholder="结束日期" :disabled-date="pickerOptions">
         </el-date-picker>
 
         <el-select style="height: 40px; width: 335px; margin-left: 5px;" size="large" :placeholder="spliceCheckInInfo"
@@ -49,24 +48,24 @@
             <div class="image-wrapper1">
                 <img src="https://cf.bstatic.com/xdata/images/city/600x600/613105.jpg?k=1e85cf4dec7b0d5a6327be91c38cf9c1711f9da1a31c4cba736f9cb751443ff1&o="
                     alt="罗马" class="image-item">
-                <span class="label">罗马</span>
+                <span class="label" @click="clickImg('罗马')">罗马</span>
             </div>
         </div>
         <div class="row">
             <div class="image-wrapper2">
                 <img src="https://cf.bstatic.com/xdata/images/city/600x600/976952.jpg?k=4c536b3833e5f6721ff5f89fa4f15d8f50fd5cd4a963060414078428aa67a6d5&o="
                     alt="伦敦" class="image-item">
-                <span class="label">伦敦</span>
+                <span class="label" @click="clickImg('伦敦')">伦敦</span>
             </div>
             <div class="image-wrapper2">
                 <img src="https://cf.bstatic.com/xdata/images/city/600x600/976539.jpg?k=0a7263960952588dc71a60f1f9c2e738b5c0af9b2d9d3c3df79677d630b8a665&o="
                     alt="阿姆斯特丹" class="image-item">
-                <span class="label">阿姆斯特丹</span>
+                <span class="label" @click="clickImg('阿姆斯特丹')">阿姆斯特丹</span>
             </div>
             <div class="image-wrapper2">
                 <img src="https://cf.bstatic.com/xdata/images/city/600x600/968315.jpg?k=14d0bad185930ec2663562b999ecf498fb6fcf492c16a4c33228504a15e2d119&o="
                     alt="巴塞罗那" class="image-item">
-                <span class="label">巴塞罗那</span>
+                <span class="label" @click="clickImg('巴塞罗那')">巴塞罗那</span>
             </div>
         </div>
     </div>
@@ -554,6 +553,26 @@ export default {
         },
     },
     methods: {
+        pickerOptions(time){
+            return time.getTime() < Date.now()- 8.64e7;
+        },
+        clickImg(dest)
+        {
+          let timestamp3 = 1403058804;
+          let newDate = new Date();
+          newDate.setTime(timestamp3 * 1000);
+
+          this.$router.push({
+                path:'/view',
+                query:{
+                  destination:dest,
+                  checkin:newDate.toGMTString(),
+                  checkout:newDate.toGMTString(),
+                  checkinfo:'00'
+                }
+              }
+          )
+        },
         Increment(idx) {
             ++this.checkInInfo[idx].value
         },
@@ -566,6 +585,16 @@ export default {
         },
         SearchInfo_OkButton() {
             // 搜特价
+          this.$router.push({
+                path:'/view',
+                query:{
+                  destination:this.destination,
+                  checkin:this.date[0],
+                  checkout:this.date[1],
+                  checkinfo:this.checkInInfo[0].value
+                }
+              }
+          )
         }
     },
 };
@@ -702,6 +731,13 @@ export default {
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.image-item:hover{
+opacity: 0.95;
+transition: 1s;
+transform: scale(1.1);
 }
 
 .emk_footer_update .cs_contact_footer {
