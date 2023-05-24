@@ -41,492 +41,35 @@
     <div class="image-container_down">
         <div class="row">
             <div class="image-wrapper1">
-                <img src="https://cf.bstatic.com/xdata/images/city/600x600/613088.jpg?k=a370ac3fb385fb211b35a79a42b0e968ddb458be37108af476c558bf4cedc1f3&o="
-                    alt="巴黎" class="image-item">
-                <span class="label">巴黎</span>
+                <img src="@/assets/images/shanghai.jpg"
+                    alt="上海" class="image-item" @click="clickImg('上海')">
+                <span class="label" @click="clickImg('上海')">上海</span>
             </div>
             <div class="image-wrapper1">
-                <img src="https://cf.bstatic.com/xdata/images/city/600x600/613105.jpg?k=1e85cf4dec7b0d5a6327be91c38cf9c1711f9da1a31c4cba736f9cb751443ff1&o="
-                    alt="罗马" class="image-item">
-                <span class="label" @click="clickImg('罗马')">罗马</span>
+                <img src="@/assets/images/nanjing.jpg"
+                    alt="南京" class="image-item" @click="clickImg('南京')">
+                <span class="label" @click="clickImg('南京')">南京</span>
             </div>
         </div>
         <div class="row">
             <div class="image-wrapper2">
-                <img src="https://cf.bstatic.com/xdata/images/city/600x600/976952.jpg?k=4c536b3833e5f6721ff5f89fa4f15d8f50fd5cd4a963060414078428aa67a6d5&o="
-                    alt="伦敦" class="image-item">
-                <span class="label" @click="clickImg('伦敦')">伦敦</span>
+                <img src="@/assets/images/suzhou.jpg"
+                    alt="苏州" class="image-item" @click="clickImg('南京')">
+                <span class="label" @click="clickImg('苏州')">苏州</span>
             </div>
             <div class="image-wrapper2">
-                <img src="https://cf.bstatic.com/xdata/images/city/600x600/976539.jpg?k=0a7263960952588dc71a60f1f9c2e738b5c0af9b2d9d3c3df79677d630b8a665&o="
-                    alt="阿姆斯特丹" class="image-item">
-                <span class="label" @click="clickImg('阿姆斯特丹')">阿姆斯特丹</span>
+                <img src="@/assets/images/yancheng.jpg"
+                    alt="盐城" class="image-item" @click="clickImg('南京')">
+                <span class="label" @click="clickImg('盐城')">盐城</span>
             </div>
             <div class="image-wrapper2">
-                <img src="https://cf.bstatic.com/xdata/images/city/600x600/968315.jpg?k=14d0bad185930ec2663562b999ecf498fb6fcf492c16a4c33228504a15e2d119&o="
-                    alt="巴塞罗那" class="image-item">
-                <span class="label" @click="clickImg('巴塞罗那')">巴塞罗那</span>
-            </div>
-        </div>
-    </div>
-    <div class="emk_footer_update emk_footer_centered emk_footer_update_space">
-        <div class="footerconstraint-inner">
-            <div class="cs_contact_footer">
-                <!-- <div class="cs_contact_footer_icon">
-                    <i class="cs_contact_footer_phone_icon"></i>
-                </div> -->
-                <div class="cs_contact_footer_title">
-                    <h3 class="cs_contact_footer_title_header">24小时客服助您安心出行</h3>
-                    <p class="cs_contact_footer_title_subheader">订单有问题？我们来帮您！</p>
-                </div>
-                <div class="cs_contact_footer_numbers">
-                    <div class="cs_contact_footer_numbers_section domestic_international_line">
-                        <p class="number_title">
-                            中文客服热线</p>
-                        <p class="number_content">
-                            <a href="https://secure.booking.com/content/cs.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;show_contact_form=1"
-                                class="number_content" target="_blank">
-                                点击了解更多客服帮助
-                            </a>
-                        </p>
-                    </div>
-                    <div class="cs_contact_footer_numbers_section help_center">
-                        <p class="number_title">
-                            常见问题</p>
-                        <p class="number_content">去<a
-                                href="https://secure.booking.com/content/cs.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                target="_blank" class="number_content">帮助中心</a>看看</p>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="emk_footer_wrapper">
-                <div class="emk_footer_banner_block">
-                    <h2>方便又省钱！</h2>
-                </div>
-                <div class="emk_footer_subbanner_block">
-                    立即注册，获取优惠好价！
-                </div>
-                <div class="clearfix"></div>
-                <div class="emk_footer_form_layout">
-                    <label for="newsletter_to" class="invisible_spoken">
-                        输入你的电子邮箱，我们将向你发送最佳优惠折扣
-                    </label>
-                    <div class="subscription_form_wrap">
-                        <input type="email" name="to" autocapitalize="off" required="true" id="newsletter_to"
-                            class="input_newsletter_subscription_to" placeholder="您的电邮地址" title="" value=""
-                            data-ajax-submit="">
-                        <el-button style="height: 30px; width: 80px; margin-left: 10px;" type="success"
-                            class="SearchInfo_OkButton">订阅</el-button>
-                    </div>
-                    <div data-et-view="dLYHMRFeRQcDaIPaMNfQCcbNXGDJae:1"></div>
-                </div>
+                <img src="@/assets/images/zhengjiang.jpg"
+                    alt="镇江" class="image-item" @click="clickImg('南京')">
+                <span class="label" @click="clickImg('镇江')">镇江</span>
             </div>
         </div>
     </div>
 
-    <div id="booking-footer" class="footer-wrapper">
-        <div id="footer_top_menu" class="footer-top-menu">
-            <div class="footer-top-partners clearfix js-footer-top-menu">
-                <div class="footerconstraint-inner clearfix">
-                    <div id="footertopnav-partners" role="navigation">
-                        <p class="footer-top-partner-text footer-top-partner-buttons">
-                            <a ref="nofollow"
-                                href="https://join.booking.com/?lang=zh-cn&amp;aid=304142&amp;utm_source=footer_menu&amp;utm_medium=frontend&amp;contact_details=UmFuZG9tSVYkc2RlIyh9Yb0onTJoWKrgOHVeiBVJUfWzcY24nLgi3g-LG2t_Dlrh&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB"
-                                target="_blank"
-                                data-ga-track="click|pageview:/internallink/partner/footer/hotellink/mytrips/zh-cn"
-                                data-et-click="customGoal:cCHObTRVDEZRdPQBcGCfTKYCcZeKe:4 "
-                                data-et-view="HCZEZUaNZIUONSFTUQODZEYTYeYINXGET:1" class="footer-top-button" color="white"
-                                data-qa="joinapp_ep">
-                                上线我的住宿
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="footerconstraint-inner clearfix">
-                <div id="footertopnav" role="navigation">
-                    <ul class="footer-top-links-list">
-                        <li class="footer-top-link">
-                            <a rel="nofollow"
-                                href="https://secure.booking.com/mytrips.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;prefer_site_type=mdot">手机版视图</a>
-                        </li>
-                        <li class="footer-top-link">
-                            <a class="manage"
-                                href="https://secure.booking.com/myreservations.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;tmpl=profile/myreservations">
-                                管理您的预订
-                            </a>
-                        </li>
-                        <li class="footer-top-link" data-ga-track="click|CSIR|CS|footer_top_customer_service_help">
-                            <a class="cuca"
-                                href="https://secure.booking.com/help.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;source=blue_footer#/?source=blue_footer"
-                                data-ga-track="click|Click|Action: mytrips|hc_entrypoint_blue_footer"
-                                data-bui-component="Tooltip" data-tooltip-text="您的参考编号是 “49D0A7B”">
-                                客服帮助
-                            </a>
-                        </li>
-                        <li class="footer-top-link">
-                            <a href="
-https://www.booking.com/affiliate-program/v2/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;utm_campaign=booking-footer&amp;utm_content=become-an-affiliate-link&amp;utm_medium=referral&amp;utm_source=booking.com
-" data-bui-component="Tooltip" class="footer_become_affiliate"
-                                data-ga-track="click|pageview:/internallink/partner/footer/affiliatelink/mytrips/zh-cn"
-                                data-tooltip-text="成为分销合作伙伴">
-                                成为分销合作伙伴
-                            </a>
-                        </li>
-                        <li class="footer-top-link">
-                            <a href="https://business.booking.com/?lang=zh-cn&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;aid=304142"
-                                class="tracked"
-                                data-google-track="Click/Action: mytrips/BBTool Footer BBZ">Booking.com商旅服务</a>
-                        </li>
-                        <li class="footer-top-link footer-top-link--last china_gtw_footer_menu">
-                            <a href="#" class="jq_tooltip" data-title="关注Booking.com官方微信号"
-                                data-node_tt_id="china_gtw_header_hover" data-tooltip-class="gtw_header_tooltip"
-                                id="china_gtw_header_cta" aria-describedby="materialized_tooltip_69ns1">
-                                关注Booking.com官方微信号<img width="25px"
-                                    src="https://cf.bstatic.com/static/img/wechat2/38ee5959c79a230731f7b5191e92c4bf7c051069.png"
-                                    alt="关注Booking.com官方微信号">
-                            </a>
-                            <div id="china_gtw_header_hover" style="display:none">
-                                <div style="text-align: center; width: 180px;padding: 10px;">
-                                    <span>关注Booking.com官方微信号</span>
-                                    <br>
-                                    <img width="150px"
-                                        src="https://cf.bstatic.com/static/img/desktop_footer_WOA/da4aea624f2026b3e6826d56e4a2555f67e8df89.jpg"
-                                        alt="关注Booking.com官方微信号">
-                                    <br>
-                                    <span>全球特价酒店应有尽有！</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div> -->
-        </div>
-        <div class="footerconstraint-inner">
-            <div id="footer" class="footer-navigation-links-wrapper clearfix" role="navigation">
-                <div id="footer_links" class="footer-navigation-links">
-                    <div class="footer-navigation-links-column footer-seo-links-to-html-sitemaps">
-                        <ul class="footer-navigation-links-list">
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/country.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="seoindexlinks" rel="nofollow">
-                                    国家/地区
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/region.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="seoindexlinks" rel="nofollow">
-                                    区域
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/city.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="seoindexlinks" rel="nofollow">
-                                    城市
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/district.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="seoindexlinks" rel="nofollow">
-                                    区
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/airport.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="seoindexlinks" rel="nofollow">
-                                    机场
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/hotel/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="seoindexlinks" rel="nofollow">
-                                    酒店
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/landmark.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="seoindexlinks" rel="nofollow">
-                                    周边地标/景点
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-navigation-links-column">
-                        <ul class="footer-navigation-links-list footer-seo-links-to-index">
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/booking-home/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="booking-home">
-                                    民宿短租
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/apartments/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="apartments">
-                                    公寓
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/resorts/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="resorts">
-                                    度假村
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/villas/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="villas">
-                                    别墅
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/hostels/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="hostels">
-                                    青旅
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/bed-and-breakfast/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="bed_and_breakfast">
-                                    住宿加早餐旅馆
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/guest-house/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="guest_house">
-                                    旅馆
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-navigation-links-column">
-                        <ul class="footer-navigation-links-list">
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/accommodations.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="accommodations">
-                                    全球独特住宿
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/reviews
-.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182
-" data-ga="seoindexlinks" class="js-reviews-footer-link">
-                                    客人点评
-                                </a>
-                            </li>
-                            <div data-et-view="  BHDTJdReLLCBLZBeMbFMOFIbeDUHYKe:1 BHDTJdReLLCBLZBeMbFMOFIbeDUHYKe:3 ">
-                            </div>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/extended-stays/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    data-ga="extended-stays">
-                                    探索月租
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://booking.com/articles.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    type="nav" location="main-site-footer" category="articles-link">
-                                    游记攻略
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/deals/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182"
-                                    title="季节和假日优惠">
-                                    季节和假日优惠
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://www.booking.com/traveller-awards/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">
-                                    Traveller Review Awards
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-navigation-links-column">
-                        <ul class="footer-navigation-links-list">
-                            <li class="footer-navigation-link">
-                                <a rel="nofollow"
-                                    href="http://cars.booking.com/Home.do?affiliateCode=booking-com&amp;adplat=footer&amp;preflang=zh-cn"
-                                    target="_blank"
-                                    data-google-track="Click/Rental cars footer link click (loy_footer_rentalcars_copy: 0)/mytrips"
-                                    data-ga-track="click|pageview:/outgoinglink/traveljigsaw/zh">
-                                    租车服务
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a rel="nofollow"
-                                    href="https://booking.com/pxgo?lang=zh&amp;token=UmFuZG9tSVYkc2RlIyh9Yek6N0IyIDltEfkJo-mEZo_i6j5_4WSmKDTElZo2GzaHJ15tKqxikGr2dbfwEHaxuOoZvhkSNXtfoeAgvYgLnCFWQGiXEz-GLKHHZ0jKE0kY5HoBVQrg1VmzjDPIFXCqBTQ-T1G9Zqkkyh-uFIySh8Z76gEKcUCfXe5Q37ccTu01xN7Cm7vR2cq4nzjPATGYoTC_40AS1dZAqjgFSNP5XbP_DH6YKXOweEavM87tORFclfTlI8was3OnH554m0zm20A24Qu28FrhUiEcU9y3Kkj6_iIO11mBuFMfdoOWwKn_mn8u6FJSfhMsF4TQLO5rfA&amp;aid=304142&amp;url=https%3A%2F%2Fbooking.kayak.com%2Fin%3Fa%3Dbdc%252Ffooter_link%26mc%3DCNY%26bdclc%3Dzh-cn%26sid%3D49d0a7bbf33b7848a413fb098219e182%26p%3Dfooter_link"
-                                    target="_blank" data-google-track="Click/Kayak footer link/mytrips"
-                                    data-ga-track="click|pageview:/outgoinglink/kayaklink">
-                                    订机票
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a rel="nofollow" href="http://www.opentable.com?ref=16087" target="_blank"
-                                    data-google-track="Click/Opentable footer link/mytrips"
-                                    data-ga-track="click|pageview:/outgoinglink/opentablelink">
-                                    餐厅订位
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="
-https://www.booking.com/affiliate-program/v2/index.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;utm_medium=referral&amp;utm_source=booking.com&amp;utm_campaign=booking-footer&amp;utm_content=travel-agents-link
-" title="Booking.com for Travel Advisers"
-                                    data-ga-track="click|pageview:/internallink/partner/footer/adviserslink/mytrips/zh-cn">
-                                    Booking.com旅行代理机构中心
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-navigation-links-column">
-                        <ul class="footer-navigation-links-list">
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://www.booking.com/covid-19-booking-faqs.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">
-                                    新冠肺炎（COVID-19）疫情常见问题及解答
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://www.booking.com/content/about.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">关于Booking.com</a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://secure.booking.com/help.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;source=footer_navigation#/?source=footer_navigation"
-                                    data-ga-track="click|Click|Action: mytrips|hc_entrypoint_footer_navigation">
-                                    客服帮助
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://partner.booking.com/en-gb?utm_campaign=footer_list&amp;utm_medium=frontend_footer&amp;utm_source=booking.com">
-                                    酒店自助平台
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://careers.booking.com/?utm_source=corporate&amp;utm_medium=footer"
-                                    data-ga-track="click|pageview:/outgoinglink/footer/careerlink/zh-cn">
-                                    Careers
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://sustainability.booking.com/"
-                                    data-ga-track="click|pageview:/outgoinglink/footer/sustainabilitylink/zh-cn">
-                                    可持续发展项目
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a class="tracked" data-google-track="Click/Action: about_us/press"
-                                    href="https://news.booking.com/zh-hk/">
-                                    新闻中心
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.booking.com/trust-and-safety.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182&amp;utm_source=footer_menu&amp;utm_medium=web_frontend"
-                                    class="tracked">
-                                    安全旅行信息中心
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a class="tracked" data-google-track="Click/Action: about_us/investor_relations"
-                                    href="https://www.bookingholdings.com/">
-                                    投资者关系
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://www.booking.com/content/terms.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">
-                                    条款与条件
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://secure.booking.com/content/complaints.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">
-                                    合作伙伴申诉
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://www.booking.com/content/how_we_work.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">
-                                    我们如何运作
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a
-                                    href="https://www.booking.com/content/privacy.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">
-                                    隐私和Cookie声明
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link">
-                                <a href="https://www.bookingholdings.com/about/compliance-and-ethics/">
-                                    MSA声明
-                                </a>
-                            </li>
-                            <li class="footer-navigation-link" data-ga-track="click|CSIR|CS|footer_link_contact_us">
-                                <a
-                                    href="https://www.booking.com/content/contact-us.zh-cn.html?aid=304142&amp;label=gen173bo-1DCA4oggI46AdIK1gDaGKIAQGYASu4ARfIAQzYAQPoAQH4AQSIAgGYAiGoAgO4Ape1sqMGwAIB0gIkZTMyYjI3MjctOTQ2OS00MDA3LThjNzMtMmYwY2QxOGI2ZGNh2AIE4AIB&amp;sid=49d0a7bbf33b7848a413fb098219e182">
-                                    其他问题查询
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="region" aria-label="即刻下载Booking.com免费应用程序" class="local_info_bot footerconstraint-inner">
-            <div class="local_info_bot_inner">
-                <div class="extranet_link_container">
-                    <a class="extranet_link"
-                        href="https://admin.booking.com/?lang=zh&amp;utm_source=extranet_login_footer&amp;utm_medium=frontend&amp;utm_campaign=login_footer_v0"
-                        data-ga-track="click|Footer|Click - Extranet login|mytrips">
-                        登录后台
-                    </a>
-                </div>
-                <div class="footercopyright ">
-                    <div class="whitebar">
-                        <div class="copyright_text">
-                            版权 © 1996–2023
-                            Booking.com™. 版权所有.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div style="clear:both;">&nbsp;</div>
-        </div>
-        <div class="footer-logos footerconstraint-inner">
-            <div class="footer__priceline">
-                <p class="footer__priceline__title"> Booking.com隶属于Booking Holdings Inc.，该集团是深受全球用户好评的在线旅行及周边服务供应商。</p>
-                <div class="footer__priceline__list">
-                    <ul>
-                        <li>
-                            <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_booking/27c8d1832de6a3123b6ee45b59ae2f81b0d9d0d0.png"
-                                title="Booking.com" alt="Booking.com" height="26" width="91">
-
-                        </li>
-                        <li>
-                            <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_priceline/f80e129541f2a952d470df2447373390f3dd4e44.png"
-                                title="Priceline" alt="Priceline" height="26" width="91">
-                        </li>
-                        <li>
-                            <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_kayak/83ef7122074473a6566094e957ff834badb58ce6.png"
-                                title="Kayak" alt="Kayak" height="26" width="79">
-                        </li>
-                        <li>
-                            <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_agoda/1c9191b6a3651bf030e41e99a153b64f449845ed.png"
-                                title="Agoda" alt="Agoda" height="26" width="70">
-                        </li>
-                        <li>
-                            <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_rentalcars/6bc5ec89d870111592a378bbe7a2086f0b01abc4.png"
-                                title="Rentalcars" alt="Rentalcars" height="26" width="109">
-                        </li>
-                        <li>
-                            <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_opentable/a4b50503eda6c15773d6e61c238230eb42fb050d.png"
-                                title="OpenTable" alt="OpenTable" height="26" width="95">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--路由占位标签-->
     <router-view></router-view>
@@ -536,6 +79,7 @@ https://www.booking.com/affiliate-program/v2/index.zh-cn.html?aid=304142&amp;lab
 export default {
     data() {
         return {
+            // destinationvar:'',
             destination: '',
             date: '',
             checkInInfo_collapseTag: false,
@@ -558,16 +102,18 @@ export default {
         },
         clickImg(dest)
         {
-          let timestamp3 = 1403058804;
+          let timestamp3 = 	1685071939000;
           let newDate = new Date();
-          newDate.setTime(timestamp3 * 1000);
+          newDate.setTime(timestamp3);
+          let new2=new Date();
+          new2.setTime(1685158339000)
 
           this.$router.push({
                 path:'/view',
                 query:{
                   destination:dest,
                   checkin:newDate.toGMTString(),
-                  checkout:newDate.toGMTString(),
+                  checkout:new2.toGMTString(),
                   checkinfo:'00'
                 }
               }
@@ -584,7 +130,12 @@ export default {
             this.$refs.CheckInfoList.visible = false;
         },
         SearchInfo_OkButton() {
+          if(this.destination == ''){this.$toast.warning("请填写目的地！",{position:"top"});return;}
+          if(this.date[0] == null){this.$toast.warning("请选择入住时间！",{position:"top"});return;}
+          if(this.date[1] == null){this.$toast.warning("请选择退房时间！",{position:"top"});return;}
+          if(this.date[0]>=this.date[1]){this.$toast.warning("退房时间应在入住时间后！",{position:"top"});return;}
             // 搜特价
+          console.log(this.destination)
           this.$router.push({
                 path:'/view',
                 query:{

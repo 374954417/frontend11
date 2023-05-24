@@ -12,7 +12,7 @@
             >
             <!-- 标语 -->
             <div v-show="isShow" class="title">
-                LOGIN
+                登录
             </div>
             </transition>
             <transition
@@ -53,7 +53,7 @@
             >
             <!--  注册表头-->
             <div v-show="!isShow" class="rigestTitle">
-                管理员注册
+                新用户注册
             </div>
             </transition>
             <transition
@@ -84,7 +84,7 @@
                 </div>
                 <div style="flex: 1;display: flex;justify-content: center;align-items: center;">
                   手&nbsp;机&nbsp;号&nbsp;码:
-                  <el-input placeholder="手机号" style="width: 165px;margin-left: 10px;height: 40px" v-model="regUser.phoneNumber" show-password></el-input>
+                  <el-input placeholder="手机号" style="width: 165px;margin-left: 10px;height: 40px" v-model="regUser.phoneNumber"></el-input>
                 </div>
             </div>
             </transition>
@@ -121,7 +121,7 @@
             <div v-show="isShow" style="display: flex;flex-direction: column;align-items: center;justify-content: center;width: 100%;height: 100%">
              <!-- 欢迎语 -->
                  <div style="flex: 2;display: flex;align-items: center;font-size: 22px;color: #FFFFFF;font-weight: bold">
-                 欢迎登入后台管理系统
+                 欢迎进入Booking
                  </div>
             <!-- 欢迎图片 -->
                  <div style="flex: 2">
@@ -205,6 +205,8 @@ export default {
         },
       loginRequest()
       {
+        if(this.loginUser.name === ''){this.$toast.warning('用户名不能为空！',{position:"top"}); return;}
+        if(this.loginUser.password === ''){this.$toast.warning('密码不能为空！',{position:"top"}); return;}
         // this.$toast.warning('账号不存在！',{position:"top"});
         console.log(this.loginUser.name)
         this.$http.post('/login/login', {
@@ -219,7 +221,7 @@ export default {
               console.log(response);
               console.log(typeof response.data.code);
               if(response.data.code === 101){
-                this.$toast.warning('账号不存在！',{position:"top"});
+                this.$toast.warning('用户名不存在！',{position:"top"});
               }
               else if(response.data.code === 102){
                 this.$toast.warning('密码错误！',{position:"top"});
@@ -238,6 +240,11 @@ export default {
 
     registerRequest()
     {
+
+      if(this.regUser.regUsername === ''){this.$toast.warning('用户名不能为空！',{position:"top"}); return;}
+      if(this.regUser.regPwd === ''){this.$toast.warning('密码不能为空！',{position:"top"}); return;}
+      if(this.regUser.regRePwd === ''){this.$toast.warning('重复密码不能为空！',{position:"top"}); return;}
+      if(this.regUser.phoneNumber === ''){this.$toast.warning('手机号不能为空！',{position:"top"}); return;}
 
       if(this.regUser.regRePwd !== this.regUser.regPwd)
       {
@@ -258,10 +265,14 @@ export default {
             console.log(response);
             console.log(typeof response.data.code);
             if(response.data.code === 104){
-              this.$toast.warning('账号存在！',{position:"top"});
+              this.$toast.warning('用户名已被使用！',{position:"top"});
             }
             else if(response.data.code === 105){
               this.$toast.warning('注册成功！',{position:"top"});
+              this.regUser.regRePwd='';
+              this.regUser.regPwd='';
+              this.regUser.regUsername='';
+              this.regUser.phoneNumber='';
             }
             else if(response.data.code === 106){
               this.$toast.warning('未知错误！',{position:"top"});
@@ -306,8 +317,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("@/assets/images/background.png");
-    background-size: 100%;
+    background-image: url("@/assets/images/road2.jpg");
+    background-size: cover;
 }
 .loginAndRegist{
     position: relative;
@@ -349,12 +360,15 @@ export default {
     z-index:2;
     top: 0;
     right: 0;
-    background-image: url("@/assets/images/background.png");
-    background-size: 90%;
+    background-image: url("@/assets/images/bag.png");
+    background-size: cover;
+
+
 }
 .showInfo:hover{
-    background-size: 100%;
-    background-position: -50px -50px;
+opacity: 0.98;
+transition: 1s;
+transform: scale(1.01);
 }
 .title{
     width: 70%;

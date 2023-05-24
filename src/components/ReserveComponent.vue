@@ -97,7 +97,6 @@
                         <th style="width: 420px;">
                           <div style="margin-left: 5px;">预订</div>
                         </th>
-
                     </tr>
 
                     <tr v-for="(room, index) in this.line" :key="index">
@@ -359,6 +358,16 @@ export default {
         },
         SearchInfo_OkButton() {
             // 搜特价
+          this.$router.push({
+                path:'/view',
+                query:{
+                  destination:this.destination,
+                  checkin:this.inDate,
+                  checkout:this.outDate,
+                  checkinfo:"this.checkInInfo[0].value"
+                }
+              }
+          )
         },
         reserve_tar_subroom(index){
 

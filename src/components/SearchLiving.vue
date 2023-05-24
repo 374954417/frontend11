@@ -180,9 +180,10 @@ export default {
             score8:false,
             score10:false,
 
-            pagesum:0, //总页数
-            currpage:1, //当前页数
-            eachpage:5, //每页行数
+            eachpage:10,
+
+          currpage:1,
+          destinationvar:'',
             destination: '中国',
             count: 0,
             inDate: '',
@@ -215,11 +216,16 @@ export default {
         }
     },
     computed: {
+      pagesum()
+      {
+        return Math.ceil(this.ComDataList.length/this.eachpage);
+      }, //总页数
+
         spliceCheckInInfo() {
             return this.checkInInfo[0].value.toString() + "位成人·" + this.checkInInfo[1].value.toString() + "位儿童·" + this.checkInInfo[2].value.toString() + "间客房"
         },
         spliceDestinationInfo() {
-            return this.destination + "：共" + this.count + "家住宿"
+            return this.destinationvar + "：共" + this.count + "家住宿"
         },
         spliceSortWay: {
             set(newValue) {
@@ -262,7 +268,9 @@ export default {
 
 
     mounted(){
+      console.log(0.1+0.2);
       this.destinationvar = this.$route.query.destination
+      console.log(this.destinationvar)
       this.checkinvar = this.$route.query.checkin
       this.checkoutvar= this.$route.query.checkout
       this.checkinfovar = this.$route.query.checkinfo
@@ -286,7 +294,7 @@ export default {
             console.log(response);
             this.hotelInfo=response.data.data;
             this.count=this.hotelInfo.length;
-            this.pagesum=Math.ceil(this.count/this.eachpage)
+            // this.pagesum=Math.ceil(this.count/this.eachpage)
           })
           .catch(function (error) {
             console.log(error);
@@ -382,6 +390,21 @@ export default {
         },
         SearchInfo_OkButton() {
             // 搜特价
+          this.destinationvar=this.destination;
+          this.$http.get('/living', {
+            params: {
+              target:this.destination
+            }
+          })
+              .then((response)=> {
+                console.log(response);
+                this.hotelInfo=response.data.data;
+                this.count=this.hotelInfo.length;
+                // this.pagesum=Math.ceil(this.count/this.eachpage)
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
         },
 
         ConvertToReserve(hidvar,index){
